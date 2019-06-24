@@ -46,6 +46,7 @@ img.ie{
   background-color: rgb(222,0,0);
   color: white;
   padding: 10px;
+  margin-top: 10px;
   font-family: arial;
 }
 .desc3 {
@@ -74,7 +75,7 @@ form.individual2 {
   padding-top: 10px;
 }
 div.individual3 {
-  width: 997px;
+  width: 1024px;
 }
 div.individual {
   width: 200px;
@@ -87,7 +88,7 @@ div.individual {
 div.foot {
   padding: 10px;
   font-family: arial;
-  font-size: 10px;
+  font-size: 8px;
 }
 div.erro {
   width: 200px;
@@ -104,6 +105,7 @@ div.submeter {
   padding: 10px;
   font-family: arial;
   font-weight: bold;
+  cursor: pointer;
 }
 .resultados {
   width: 1000px;
@@ -141,6 +143,7 @@ function mostrar() {
     ac.style.display = "none"
     pe.style.display = "none"
     ot.style.display = "none"
+    seg.style.display = "none"
     var objeto = "none"
   }
   if(especialidade=="Construção Civil"){
@@ -149,6 +152,7 @@ function mostrar() {
     ac.style.display = "none"
     pe.style.display = "none"
     ot.style.display = "none"
+    seg.style.display = "none"
     var e = document.getElementById("esp.cc");
     var value = e.options[e.selectedIndex].value;
     var objeto = e.options[e.selectedIndex].text;
@@ -159,6 +163,7 @@ function mostrar() {
     ac.style.display = "none"
     pe.style.display = "none"
     ot.style.display = "none"
+    seg.style.display = "none"
     var e = document.getElementById("esp.ie");
     var value = e.options[e.selectedIndex].value;
     var objeto = e.options[e.selectedIndex].text;
@@ -169,6 +174,7 @@ function mostrar() {
     ac.style.display = "block"
     pe.style.display = "none"
     ot.style.display = "none"
+    seg.style.display = "none"
     var e = document.getElementById("esp.ac");
     var value = e.options[e.selectedIndex].value;
     var objeto = e.options[e.selectedIndex].text;
@@ -179,6 +185,7 @@ function mostrar() {
     ac.style.display = "none"
     pe.style.display = "block"
     ot.style.display = "none"
+    seg.style.display = "none"
     var e = document.getElementById("esp.pe");
     var value = e.options[e.selectedIndex].value;
     var objeto = e.options[e.selectedIndex].text;
@@ -189,7 +196,19 @@ function mostrar() {
     ac.style.display = "none"
     pe.style.display = "none"
     ot.style.display = "block"
+    seg.style.display = "none"
     var e = document.getElementById("esp.ot");
+    var value = e.options[e.selectedIndex].value;
+    var objeto = e.options[e.selectedIndex].text;
+  }
+  if(especialidade=="Segurança"){
+    cc.style.display = "none"
+    ie.style.display = "none"
+    ac.style.display = "none"
+    pe.style.display = "none"
+    ot.style.display = "none"
+    seg.style.display = "block"
+    var e = document.getElementById("esp.seg");
     var value = e.options[e.selectedIndex].value;
     var objeto = e.options[e.selectedIndex].text;
   }
@@ -252,6 +271,7 @@ function mostrar() {
     document.getElementById("descObjetoAC").style.backgroundColor = "#bbb";
     document.getElementById("descObjetoPE").style.backgroundColor = "#bbb";
     document.getElementById("descObjetoOT").style.backgroundColor = "#bbb";
+    document.getElementById("descObjetoSEG").style.backgroundColor = "#bbb";
   }
   else {
     document.getElementById("descObjetoCC").style.backgroundColor = "rgb(222,0,0)";
@@ -259,6 +279,7 @@ function mostrar() {
     document.getElementById("descObjetoAC").style.backgroundColor = "rgb(222,0,0)";
     document.getElementById("descObjetoPE").style.backgroundColor = "rgb(222,0,0)";
     document.getElementById("descObjetoOT").style.backgroundColor = "rgb(222,0,0)";
+    document.getElementById("descObjetoSEG").style.backgroundColor = "rgb(222,0,0)";
   }
 }
 
@@ -272,6 +293,7 @@ function submeter() {
     ac.style.display = "none"
     pe.style.display = "none"
     ot.style.display = "none"
+    seg.style.display = "none"
     var objeto = "none"
   }
   if(especialidade=="Construção Civil"){
@@ -280,6 +302,7 @@ function submeter() {
     ac.style.display = "none"
     pe.style.display = "none"
     ot.style.display = "none"
+    seg.style.display = "none"
     var e = document.getElementById("esp.cc");
     var value = e.options[e.selectedIndex].value;
     var objeto = e.options[e.selectedIndex].text;
@@ -290,6 +313,7 @@ function submeter() {
     ac.style.display = "none"
     pe.style.display = "none"
     ot.style.display = "none"
+    seg.style.display = "none"
     var e = document.getElementById("esp.ie");
     var value = e.options[e.selectedIndex].value;
     var objeto = e.options[e.selectedIndex].text;
@@ -300,6 +324,7 @@ function submeter() {
     ac.style.display = "block"
     pe.style.display = "none"
     ot.style.display = "none"
+    seg.style.display = "none"
     var e = document.getElementById("esp.ac");
     var value = e.options[e.selectedIndex].value;
     var objeto = e.options[e.selectedIndex].text;
@@ -310,6 +335,7 @@ function submeter() {
     ac.style.display = "none"
     pe.style.display = "block"
     ot.style.display = "none"
+    seg.style.display = "none"
     var e = document.getElementById("esp.pe");
     var value = e.options[e.selectedIndex].value;
     var objeto = e.options[e.selectedIndex].text;
@@ -320,7 +346,19 @@ function submeter() {
     ac.style.display = "none"
     pe.style.display = "none"
     ot.style.display = "block"
+    seg.style.display = "none"
     var e = document.getElementById("esp.ot");
+    var value = e.options[e.selectedIndex].value;
+    var objeto = e.options[e.selectedIndex].text;
+  }
+  if(especialidade=="Segurança"){
+    cc.style.display = "none"
+    ie.style.display = "none"
+    ac.style.display = "none"
+    pe.style.display = "none"
+    ot.style.display = "none"
+    seg.style.display = "block"
+    var e = document.getElementById("esp.seg");
     var value = e.options[e.selectedIndex].value;
     var objeto = e.options[e.selectedIndex].text;
   }
@@ -345,6 +383,7 @@ function submeter() {
     document.getElementById("esp.ac").value = ""
     document.getElementById("esp.pe").value = ""
     document.getElementById("esp.ot").value = ""
+    document.getElementById("esp.seg").value = ""
     var objeto = ""
     document.getElementById("urgência").value = ""
     var urgência = ""
@@ -353,7 +392,7 @@ function submeter() {
     document.getElementById("submeterPedido").style.backgroundColor = "#bbb";
     document.getElementById("instruções").style.backgroundColor = "rgb(222,0,0)";
     document.getElementById("instruções1").textContent = "Deverá preencher todos os campos para";
-    document.getElementById("instruções2").textContent = " esbloquear a opção SUBMETER PEDIDO.";
+    document.getElementById("instruções2").textContent = "desbloquear a opção SUBMETER PEDIDO.";
     document.getElementById("descEspecialidade").style.backgroundColor = "rgb(222,0,0)";
     document.getElementById("descUrgência").style.backgroundColor = "rgb(222,0,0)";
     document.getElementById("descDescrição").style.backgroundColor = "rgb(222,0,0)";
@@ -362,6 +401,7 @@ function submeter() {
     document.getElementById("descObjetoAC").style.backgroundColor = "rgb(222,0,0)";
     document.getElementById("descObjetoPE").style.backgroundColor = "rgb(222,0,0)";
     document.getElementById("descObjetoOT").style.backgroundColor = "rgb(222,0,0)";
+    document.getElementById("descObjetoSEG").style.backgroundColor = "rgb(222,0,0)";
   }
   else {
     alert("É necessário preencher todos os campos antes de submeter o pedido!");
@@ -378,7 +418,7 @@ function infoZona() {
 }
 function infoEspecialidade() {
   document.getElementById("instruções1").textContent = "Indique a especialidade e objeto que melhor caraterizam o problema.";
-  document.getElementById("instruções2").textContent = "Estacionamento, acessos, limpeza e farmácia estão disponíveis na especialidade OUTROS.";
+  document.getElementById("instruções2").textContent = "Estacionamento e acessos encontram-se em SEGURANÇA, limpeza e farmácia em OUTROS.";
 }
 function infoUrgência() {
   document.getElementById("instruções1").textContent = "NORMAL: deverá ser resolvido assim que possível. URGENTE: problema causa desconforto ou atrapalha a execução das funções.";
@@ -398,11 +438,19 @@ function infoSubmeter() {
   <div class="pagina">
     <br>
     <img src="ectt-banner.jpg" alt="">
-    <br>
     <div class="notification-message-unread" id="permissão" align="center" >
       ESTE FORMULÁRIO NECESSITA DE PERMISSÃO PARA EXECUTAR SCRIPTS!
     </div>
     <img src="ie.jpg" alt="" class="ie" id="permissãoie">
+    <div align="center" class="desc2" id="instruções">
+      <span id="instruções1">
+        Deve preencher todos os campos para
+      </span>
+      <br>
+      <span id="instruções2">
+        desbloquear a opção SUBMETER PEDIDO.
+      </span>
+    </div>
     <div class="global">
       <img class="planta" src="planta.jpg" alt="">
       <! ----------------------------------------------------------------- PISO -->
@@ -469,6 +517,7 @@ function infoSubmeter() {
           <option value="">Ar Condicionado</option>
           <option value="">Elevadores</option>
           <option value="">Outros</option>
+          <option value="">Segurança</option>
         </select>
         <div class="individual" id="descEspecialidade">
           ESPECIALIDADE:
@@ -544,8 +593,6 @@ function infoSubmeter() {
       <form class="individual" action="index.html" display="none" method="post" id="ot">
         <select class="piso" name="Piso" id="esp.ot" onchange="mostrar()" onfocus="infoEspecialidade()">
           <option value=""></option>
-          <option value="">Cartões/Acessos</option>
-          <option value="">Estacionamento</option>
           <option value="">Farmácia</option>
           <option value="">Consumíveis</option>
           <option value="">Eletrodomésticos</option>
@@ -555,6 +602,24 @@ function infoSubmeter() {
           <option value="">Limpezas</option>
         </select>
         <div class="individual" id="descObjetoOT">
+          OBJETO:
+        </div>
+      </form>
+      <! ------------------------------------------------------------ OBJ SEG -->
+      <form class="individual" action="index.html" display="none" method="post" id="seg">
+        <select class="piso" name="Piso" id="esp.seg" onchange="mostrar()" onfocus="infoEspecialidade()">
+          <option value=""></option>
+          <option value="">Cartões/Acessos</option>
+          <option value="">Estacionamento</option>
+          <option value="">Alarmes</option>
+          <option value="">Carretéis</option>
+          <option value="">Extintores</option>
+          <option value="">Equipas de emergência</option>
+          <option value="">Portas corta fogo</option>
+          <option value="">Sistema de som</option>
+          <option value="">Outros</option>
+        </select>
+        <div class="individual" id="descObjetoSEG">
           OBJETO:
         </div>
       </form>
@@ -587,20 +652,14 @@ function infoSubmeter() {
       <div class="submeter" align="center" onclick="submeter()" id="submeterPedido" onfocus="infoSubmeter()">
         SUBMETER PEDIDO
       </div>
-      <br><br>
-      <div align="center" class="desc2" id="instruções">
-        <span id="instruções1">
-          Deve preencher todos os campos para desbloquear a opção SUBMETER PEDIDO.
-        </span>
-        <br>
-        <span id="instruções2">
-          (Este formulário necessita de permissão para executar scripts!).
-        </span>
+      <br>
+      <div class="foot" align="right">
+        FORMULÁRIO EDIFÍCIO CTT v1.1
       </div>
+      <br><br>
+
     </div>
-    <div class="foot" align="right">
-      FORMULÁRIO EDIFÍCIO CTT v1.0
-    </div>
+
   </div>
 </body>
 </html>
