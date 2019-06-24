@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="pt" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<style>
+.notification-message-unread {
+  width: 1004px;
+  font-family: arial;
+  background-color: rgb(222,0,0);
+  color: white;
+  padding: 10px;
+  font-family: arial;
+  font-weight: bold;
+  font-size: 40px;
+  animation: blinker 1s linear infinite;
+}
+@keyframes blinker {
+  50% {
+    background-color: white;
+  }
+}
+.desc {
+  float: right;
+  font-family: arial;
+  width: 760px;
+}
+img.planta {
+  float: right;
+  width: 560px;
+}
+img.ie{
+  display: block;
+  padding-left: 51px;
+  padding-right: 51px;
+  padding-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgb(222,0,0);
+  animation: blinker 1s linear infinite;
+}
+.desc2 {
+  width: 1004px;
+  font-family: arial;
+  background-color: rgb(222,0,0);
+  color: white;
+  padding: 10px;
+  font-family: arial;
+}
+.desc3 {
+  width: 1004px;
+  font-family: arial;
+  background-color: rgb(222,0,0);
+  color: white;
+  padding: 10px;
+  font-family: arial;
+  font-weight: bold;
+  font-size: 40px;
+}
+div.pagina {
+  max-width: 1024px;
+  margin: auto;
+}
+div.global {
+  width: 1024px;
+}
+form.individual {
+  width: 450px;
+  padding-top: 10px;
+}
+form.individual2 {
+  width: 997px;
+  padding-top: 10px;
+}
+div.individual3 {
+  width: 997px;
+}
+div.individual {
+  width: 200px;
+  background-color: rgb(222,0,0);
+  color: white;
+  padding: 10px;
+  font-family: arial;
+  font-weight: bold;
+}
+div.foot {
+  padding: 10px;
+  font-family: arial;
+  font-size: 10px;
+}
+div.erro {
+  width: 200px;
+  background-color: #bbb;
+  color: white;
+  padding: 10px;
+  font-family: arial;
+  font-weight: bold;
+}
+div.submeter {
+  width: 200px;
+  background-color: rgb(222,0,0);
+  color: white;
+  padding: 10px;
+  font-family: arial;
+  font-weight: bold;
+}
+.resultados {
+  width: 1000px;
+  height: 100px;
+  background-color: blue;
+  color: white;
+  padding: 10px;
+  font-family: arial;
+  font-weight: bold;
+}
+select {
+  width: 220px;
+  padding: 10px;
+  float: right
+}
+</style>
+
+<script>
+var piso = ""
+var zona = ""
+var especialidade = ""
+var objeto = ""
+var urgência = ""
+var descrição = ""
+
+function mostrar() {
+  permissão.style.display = "none";
+  permissãoie.style.display = "none";
+  var e = document.getElementById("especialidade");
+  var value = e.options[e.selectedIndex].value;
+  var especialidade = e.options[e.selectedIndex].text;
+  if(especialidade==""){
+    cc.style.display = "block"
+    ie.style.display = "none"
+    ac.style.display = "none"
+    pe.style.display = "none"
+    ot.style.display = "none"
+    var objeto = "none"
+  }
+  if(especialidade=="Construção Civil"){
+    cc.style.display = "block"
+    ie.style.display = "none"
+    ac.style.display = "none"
+    pe.style.display = "none"
+    ot.style.display = "none"
+    var e = document.getElementById("esp.cc");
+    var value = e.options[e.selectedIndex].value;
+    var objeto = e.options[e.selectedIndex].text;
+  }
+  if(especialidade=="Eletricidade"){
+    cc.style.display = "none"
+    ie.style.display = "block"
+    ac.style.display = "none"
+    pe.style.display = "none"
+    ot.style.display = "none"
+    var e = document.getElementById("esp.ie");
+    var value = e.options[e.selectedIndex].value;
+    var objeto = e.options[e.selectedIndex].text;
+  }
+  if(especialidade=="Ar Condicionado"){
+    cc.style.display = "none"
+    ie.style.display = "none"
+    ac.style.display = "block"
+    pe.style.display = "none"
+    ot.style.display = "none"
+    var e = document.getElementById("esp.ac");
+    var value = e.options[e.selectedIndex].value;
+    var objeto = e.options[e.selectedIndex].text;
+  }
+  if(especialidade=="Elevadores"){
+    cc.style.display = "none"
+    ie.style.display = "none"
+    ac.style.display = "none"
+    pe.style.display = "block"
+    ot.style.display = "none"
+    var e = document.getElementById("esp.pe");
+    var value = e.options[e.selectedIndex].value;
+    var objeto = e.options[e.selectedIndex].text;
+  }
+  if(especialidade=="Outros"){
+    cc.style.display = "none"
+    ie.style.display = "none"
+    ac.style.display = "none"
+    pe.style.display = "none"
+    ot.style.display = "block"
+    var e = document.getElementById("esp.ot");
+    var value = e.options[e.selectedIndex].value;
+    var objeto = e.options[e.selectedIndex].text;
+  }
+  var e = document.getElementById("piso");
+  var value = e.options[e.selectedIndex].value;
+  var piso = e.options[e.selectedIndex].text;
+  var e = document.getElementById("zona");
+  var value = e.options[e.selectedIndex].value;
+  var zona = e.options[e.selectedIndex].text;
+  var e = document.getElementById("urgência");
+  var value = e.options[e.selectedIndex].value;
+  var urgência = e.options[e.selectedIndex].text;
+  var descrição = document.getElementById("descrição").value;
+  if (piso !="" && zona !="" && especialidade !="" && objeto !="" && urgência !="" && descrição !=""){
+    document.getElementById("submeterPedido").style.backgroundColor = "rgb(222,0,0)";
+    document.getElementById("instruções").style.backgroundColor = "#bbb";
+    document.getElementById("instruções1").textContent = "Todos os campos estão preenchidos, pode submeter o pedido!";
+    document.getElementById("instruções2").textContent = "Será gerado um novo email com os dados indicados - poderá adicionar anexos antes de enviar.";
+  }
+  else {
+    document.getElementById("submeterPedido").style.backgroundColor = "#bbb";
+    document.getElementById("instruções").style.backgroundColor = "rgb(222,0,0)";
+    document.getElementById("instruções1").textContent = "Deve preencher todos os campos para";
+    document.getElementById("instruções2").textContent = "desbloquear a opção SUBMETER PEDIDO.";
+  }
+
+  if (piso !="") {
+    document.getElementById("descPiso").style.backgroundColor = "#bbb";
+  }
+  else {
+    document.getElementById("descPiso").style.backgroundColor = "rgb(222,0,0)";
+  }
+  if (zona !="") {
+    document.getElementById("descZona").style.backgroundColor = "#bbb";
+  }
+  else {
+    document.getElementById("descZona").style.backgroundColor = "rgb(222,0,0)";
+  }
+  if (urgência !="") {
+    document.getElementById("descUrgência").style.backgroundColor = "#bbb";
+  }
+  else {
+    document.getElementById("descUrgência").style.backgroundColor = "rgb(222,0,0)";
+  }
+  if (descrição !="") {
+    document.getElementById("descDescrição").style.backgroundColor = "#bbb";
+  }
+  else {
+    document.getElementById("descDescrição").style.backgroundColor = "rgb(222,0,0)";
+  }
+  if (especialidade !="") {
+    document.getElementById("descEspecialidade").style.backgroundColor = "#bbb";
+  }
+  else {
+    document.getElementById("descEspecialidade").style.backgroundColor = "rgb(222,0,0)";
+  }
+  if (objeto !="" && objeto != "none") {
+    document.getElementById("descObjetoCC").style.backgroundColor = "#bbb";
+    document.getElementById("descObjetoIE").style.backgroundColor = "#bbb";
+    document.getElementById("descObjetoAC").style.backgroundColor = "#bbb";
+    document.getElementById("descObjetoPE").style.backgroundColor = "#bbb";
+    document.getElementById("descObjetoOT").style.backgroundColor = "#bbb";
+  }
+  else {
+    document.getElementById("descObjetoCC").style.backgroundColor = "rgb(222,0,0)";
+    document.getElementById("descObjetoIE").style.backgroundColor = "rgb(222,0,0)";
+    document.getElementById("descObjetoAC").style.backgroundColor = "rgb(222,0,0)";
+    document.getElementById("descObjetoPE").style.backgroundColor = "rgb(222,0,0)";
+    document.getElementById("descObjetoOT").style.backgroundColor = "rgb(222,0,0)";
+  }
+}
+
+function submeter() {
+  var e = document.getElementById("especialidade");
+  var value = e.options[e.selectedIndex].value;
+  var especialidade = e.options[e.selectedIndex].text;
+  if(especialidade==""){
+    cc.style.display = "block"
+    ie.style.display = "none"
+    ac.style.display = "none"
+    pe.style.display = "none"
+    ot.style.display = "none"
+    var objeto = "none"
+  }
+  if(especialidade=="Construção Civil"){
+    cc.style.display = "block"
+    ie.style.display = "none"
+    ac.style.display = "none"
+    pe.style.display = "none"
+    ot.style.display = "none"
+    var e = document.getElementById("esp.cc");
+    var value = e.options[e.selectedIndex].value;
+    var objeto = e.options[e.selectedIndex].text;
+  }
+  if(especialidade=="Eletricidade"){
+    cc.style.display = "none"
+    ie.style.display = "block"
+    ac.style.display = "none"
+    pe.style.display = "none"
+    ot.style.display = "none"
+    var e = document.getElementById("esp.ie");
+    var value = e.options[e.selectedIndex].value;
+    var objeto = e.options[e.selectedIndex].text;
+  }
+  if(especialidade=="Ar Condicionado"){
+    cc.style.display = "none"
+    ie.style.display = "none"
+    ac.style.display = "block"
+    pe.style.display = "none"
+    ot.style.display = "none"
+    var e = document.getElementById("esp.ac");
+    var value = e.options[e.selectedIndex].value;
+    var objeto = e.options[e.selectedIndex].text;
+  }
+  if(especialidade=="Elevadores"){
+    cc.style.display = "none"
+    ie.style.display = "none"
+    ac.style.display = "none"
+    pe.style.display = "block"
+    ot.style.display = "none"
+    var e = document.getElementById("esp.pe");
+    var value = e.options[e.selectedIndex].value;
+    var objeto = e.options[e.selectedIndex].text;
+  }
+  if(especialidade=="Outros"){
+    cc.style.display = "none"
+    ie.style.display = "none"
+    ac.style.display = "none"
+    pe.style.display = "none"
+    ot.style.display = "block"
+    var e = document.getElementById("esp.ot");
+    var value = e.options[e.selectedIndex].value;
+    var objeto = e.options[e.selectedIndex].text;
+  }
+
+  var e = document.getElementById("piso");
+  var value = e.options[e.selectedIndex].value;
+  var piso = e.options[e.selectedIndex].text;
+  var e = document.getElementById("zona");
+  var value = e.options[e.selectedIndex].value;
+  var zona = e.options[e.selectedIndex].text;
+  var e = document.getElementById("urgência");
+  var value = e.options[e.selectedIndex].value;
+  var urgência = e.options[e.selectedIndex].text;
+  var descrição = document.getElementById("descrição").value;
+  if (piso !="" && zona !="" && especialidade !="" && objeto !="" && urgência !="" && descrição !=""){
+    var email = "mailto:"+"imotalismaservice"+"@"+"ctt.pt?subject=EDIFICIO CTT [Piso "+piso+"."+zona+"] - "+encodeURIComponent(especialidade)+"/"+encodeURIComponent(objeto)+" ("+encodeURIComponent(urgência)+")&body=FORMULÁRIO EDIFÍCIO CTT%0D%0A%0D%0APISO: "+encodeURIComponent(piso)+"."+encodeURIComponent(zona)+"%0D%0AESPECIALIDADE: "+encodeURIComponent(especialidade)+"%0D%0AOBJETO: "+encodeURIComponent(objeto)+"%0D%0AURGÊNCIA: "+encodeURIComponent(urgência)+"%0D%0A%0D%0ADESCRIÇÃO:%0D%0A"+encodeURIComponent(descrição);
+    window.location.href = email;
+    document.getElementById("especialidade").value = ""
+    var especilidade = ""
+    document.getElementById("esp.cc").value = ""
+    document.getElementById("esp.ie").value = ""
+    document.getElementById("esp.ac").value = ""
+    document.getElementById("esp.pe").value = ""
+    document.getElementById("esp.ot").value = ""
+    var objeto = ""
+    document.getElementById("urgência").value = ""
+    var urgência = ""
+    document.getElementById("descrição").value = ""
+    var descrição = ""
+    document.getElementById("submeterPedido").style.backgroundColor = "#bbb";
+    document.getElementById("instruções").style.backgroundColor = "rgb(222,0,0)";
+    document.getElementById("instruções1").textContent = "Deverá preencher todos os campos para";
+    document.getElementById("instruções2").textContent = " esbloquear a opção SUBMETER PEDIDO.";
+    document.getElementById("descEspecialidade").style.backgroundColor = "rgb(222,0,0)";
+    document.getElementById("descUrgência").style.backgroundColor = "rgb(222,0,0)";
+    document.getElementById("descDescrição").style.backgroundColor = "rgb(222,0,0)";
+    document.getElementById("descObjetoCC").style.backgroundColor = "rgb(222,0,0)";
+    document.getElementById("descObjetoIE").style.backgroundColor = "rgb(222,0,0)";
+    document.getElementById("descObjetoAC").style.backgroundColor = "rgb(222,0,0)";
+    document.getElementById("descObjetoPE").style.backgroundColor = "rgb(222,0,0)";
+    document.getElementById("descObjetoOT").style.backgroundColor = "rgb(222,0,0)";
+  }
+  else {
+    alert("É necessário preencher todos os campos antes de submeter o pedido!");
+  }
+}
+
+function infoPiso() {
+  document.getElementById("instruções1").textContent = "Indique o piso e zona do problema que está a reportar.";
+  document.getElementById("instruções2").textContent = "Se não consegue indicar a zona do problema indique a zona do seu posto de trabalho e na descrição indique onde o problema acontece.";
+}
+function infoZona() {
+  document.getElementById("instruções1").textContent = "Indique a zona com base na planta apresentada acima.";
+  document.getElementById("instruções2").textContent = "Em pisos com layout diferente do apresentado na planta pode utilizar a DESCRIÇÃO para indicar a zona a intervir.";
+}
+function infoEspecialidade() {
+  document.getElementById("instruções1").textContent = "Indique a especialidade e objeto que melhor caraterizam o problema.";
+  document.getElementById("instruções2").textContent = "Estacionamento, acessos, limpeza e farmácia estão disponíveis na especialidade OUTROS.";
+}
+function infoUrgência() {
+  document.getElementById("instruções1").textContent = "NORMAL: deverá ser resolvido assim que possível. URGENTE: problema causa desconforto ou atrapalha a execução das funções.";
+  document.getElementById("instruções2").textContent = " EMERGENTE: a saúde ou segurança de pessoas e bens está em causa ou problema impede realização de funções.";
+}
+function infoDescrição() {
+  document.getElementById("instruções1").textContent = "Deverá indicar toda a informação que considere relevante para a resolução do problema.";
+  document.getElementById("instruções2").textContent = "Detalhes como local exato, horário ou outros poderão contribuir para a rápida resolução do problema.";
+}
+function infoSubmeter() {
+  document.getElementById("instruções1").textContent = "Deve preencher todos os campos para";
+  document.getElementById("instruções2").textContent = "desbloquear a opção SUBMETER PEDIDO.";
+}
+</script>
+
+<body onload="mostrar()" onfocus="infoSubmeter()">
+  <div class="pagina">
+    <br>
+    <img src="ectt-banner.jpg" alt="">
+    <br>
+    <div class="notification-message-unread" id="permissão" align="center" >
+      ESTE FORMULÁRIO NECESSITA DE PERMISSÃO PARA EXECUTAR SCRIPTS!
+    </div>
+    <img src="ie.jpg" alt="" class="ie" id="permissãoie">
+    <div class="global">
+      <img class="planta" src="planta.jpg" alt="">
+      <! ----------------------------------------------------------------- PISO -->
+      <form class="individual" action="index.html" method="post">
+        <select class="piso" name="Piso" id="piso" onchange="mostrar()" onfocus="infoPiso()">
+          <option value=""></option>
+          <option value="">13</option>
+          <option value="">12</option>
+          <option value="">11</option>
+          <option value="">10</option>
+          <option value="">9</option>
+          <option value="">8</option>
+          <option value="">7</option>
+          <option value="">6</option>
+          <option value="">5</option>
+          <option value="">4</option>
+          <option value="">3</option>
+          <option value="">2</option>
+          <option value="">1</option>
+          <option value="">E2</option>
+          <option value="">0</option>
+          <option value="">-1</option>
+          <option value="">-2</option>
+          <option value="">-3</option>
+          <option value="">-4</option>
+          <option value="">-5</option>
+        </select>
+        <div class="individual" id="descPiso">
+          PISO:
+        </div>
+      </form>
+      <! ----------------------------------------------------------------- ZONA -->
+      <form class="individual" action="index.html" method="post">
+        <select class="piso" name="Piso" id="zona" onchange="mostrar()" onfocus="infoZona()">
+          <option value=""></option>
+          <option value="">A1</option>
+          <option value="">A2</option>
+          <option value="">A3</option>
+          <option value="">B1</option>
+          <option value="">B2</option>
+          <option value="">B3</option>
+          <option value="">B4</option>
+          <option value="">B5</option>
+          <option value="">B6</option>
+          <option value="">C1</option>
+          <option value="">C2</option>
+          <option value="">C3</option>
+          <option value="">C4</option>
+          <option value="">Estacionamento</option>
+          <option value="">Auditório</option>
+          <option value="">Sala CE</option>
+          <option value="">Sala CA</option>
+        </select>
+        <div class="individual" id="descZona">
+          ZONA:
+        </div>
+      </form>
+      <! ------------------------------------------------------- ESPECIALIDADE -->
+      <form class="individual" action="index.html" method="post" onload="mostrar()">
+        <select class="piso" name="Piso" id="especialidade" onchange="mostrar()" onfocus="infoEspecialidade()">
+          <option value=""></option>
+          <option value="">Construção Civil</option>
+          <option value="">Eletricidade</option>
+          <option value="">Ar Condicionado</option>
+          <option value="">Elevadores</option>
+          <option value="">Outros</option>
+        </select>
+        <div class="individual" id="descEspecialidade">
+          ESPECIALIDADE:
+        </div>
+      </form>
+      <! ------------------------------------------------------------- OBJ CC -->
+      <form class="individual" action="index.html" method="post" id="cc">
+        <select class="piso" name="Piso" id="esp.cc" onchange="mostrar()" onfocus="infoEspecialidade()">
+          <option value=""></option>
+          <option value="">Autoclismos</option>
+          <option value="">Barreira/Cancela</option>
+          <option value="">Divisórias Amovíveis/Tetos Falsos</option>
+          <option value="">Entupimentos</option>
+          <option value="">Escadas</option>
+          <option value="">Esgotos</option>
+          <option value="">Estores</option>
+          <option value="">Expositores/Cartazes/Placas</option>
+          <option value="">Fugas de água</option>
+          <option value="">Infiltrações</option>
+          <option value="">Janelas</option>
+          <option value="">Louças Sanitárias</option>
+          <option value="">Paredes/Tetos</option>
+          <option value="">Pavimentos</option>
+          <option value="">Portas/Portões</option>
+          <option value="">Torneiras</option>
+          <option value="">Vidros/Espelhos</option>
+          <option value="">Outros</option>
+        </select>
+        <div class="individual" id="descObjetoCC">
+          OBJETO:
+        </div>
+      </form>
+      <! ------------------------------------------------------------- OBJ IE -->
+      <form class="individual" action="index.html" display="none" method="post" id="ie">
+        <select class="piso" name="Piso" id="esp.ie" onchange="mostrar()" onfocus="infoEspecialidade()">
+          <option value=""></option>
+          <option value="">Falha de energia</option>
+          <option value="">Iluminação</option>
+          <option value="">Tomadas Eléctricas</option>
+          <option value="">Tomadas de Rede</option>
+          <option value="">Outros</option>
+        </select>
+        <div class="individual" id="descObjetoIE">
+          OBJETO:
+        </div>
+      </form>
+      <! ------------------------------------------------------------- OBJ AC -->
+      <form class="individual" action="index.html" display="none" method="post" id="ac">
+        <select class="piso" name="Piso" id="esp.ac" onchange="mostrar()" onfocus="infoEspecialidade()">
+          <option value=""></option>
+          <option value="">Temperatura</option>
+          <option value="">Ventilação</option>
+          <option value="">Qualidade do ar interior</option>
+          <option value="">Horário de funcionamento</option>
+          <option value="">Outros</option>
+        </select>
+        <div class="individual" id="descObjetoAC">
+          OBJETO:
+        </div>
+      </form>
+      <! ------------------------------------------------------------- OBJ PE -->
+      <form class="individual" action="index.html" display="none" method="post" id="pe">
+        <select class="piso" name="Piso" id="esp.pe" onchange="mostrar()" onfocus="infoEspecialidade()">
+          <option value=""></option>
+          <option value="">Elevadores</option>
+          <option value="">Monta Cargas</option>
+        </select>
+        <div class="individual" id="descObjetoPE">
+          OBJETO:
+        </div>
+      </form>
+      <! ------------------------------------------------------------- OBJ OT -->
+      <form class="individual" action="index.html" display="none" method="post" id="ot">
+        <select class="piso" name="Piso" id="esp.ot" onchange="mostrar()" onfocus="infoEspecialidade()">
+          <option value=""></option>
+          <option value="">Cartões/Acessos</option>
+          <option value="">Estacionamento</option>
+          <option value="">Farmácia</option>
+          <option value="">Consumíveis</option>
+          <option value="">Eletrodomésticos</option>
+          <option value="">Equipamentos específicos</option>
+          <option value="">Mobiliário</option>
+          <option value="">Mudança de posto de trabalho</option>
+          <option value="">Limpezas</option>
+        </select>
+        <div class="individual" id="descObjetoOT">
+          OBJETO:
+        </div>
+      </form>
+      <! ----------------------------------------------------------- urgência -->
+      <form class="individual" action="index.html" method="post">
+        <select class="piso" name="Piso" id="urgência" onchange="mostrar()" onfocus="infoUrgência()">
+          <option value=""></option>
+          <option value="">Normal</option>
+          <option value="">Urgente</option>
+          <option value="">Emergente</option>
+        </select>
+        <div class="individual" id="descUrgência">
+          URGÊNCIA:
+        </div>
+      </form>
+      <! ------------------------------------------------------- descrição -->
+      <form class="individual2" action="index.html" method="post">
+        <textarea class="desc" name="name" rows="8" cols="93" id="descrição" oninput="mostrar()" onfocus="infoDescrição()"></textarea>
+        <div class="individual" id="descDescrição">
+          DESCRIÇÃO:
+        </div>
+      </form>
+      <form class="individual2" action="index.html" method="post">
+        <br>
+      </form>
+    </div>
+    <br><br><br><br>
+    <div class="individual3" align="center">
+      <br>
+      <div class="submeter" align="center" onclick="submeter()" id="submeterPedido" onfocus="infoSubmeter()">
+        SUBMETER PEDIDO
+      </div>
+      <br><br>
+      <div align="center" class="desc2" id="instruções">
+        <span id="instruções1">
+          Deve preencher todos os campos para desbloquear a opção SUBMETER PEDIDO.
+        </span>
+        <br>
+        <span id="instruções2">
+          (Este formulário necessita de permissão para executar scripts!).
+        </span>
+      </div>
+    </div>
+    <div class="foot" align="right">
+      FORMULÁRIO EDIFÍCIO CTT v1.0
+    </div>
+  </div>
+</body>
+</html>
