@@ -417,8 +417,8 @@ function infoZona() {
   document.getElementById("instruções2").textContent = "Em pisos com layout diferente do apresentado na planta pode utilizar a DESCRIÇÃO para indicar a zona a intervir.";
 }
 function infoEspecialidade() {
-  document.getElementById("instruções1").textContent = "Indique a especialidade e objeto que melhor caraterizam o problema.";
-  document.getElementById("instruções2").textContent = "Estacionamento e acessos encontram-se em SEGURANÇA, limpeza e farmácia em OUTROS.";
+  document.getElementById("instruções1").textContent = "Indique a especialidade e objeto que";
+  document.getElementById("instruções2").textContent = "melhor caraterizam o seu pedido.";
 }
 function infoUrgência() {
   document.getElementById("instruções1").textContent = "NORMAL: deverá ser resolvido assim que possível. URGENTE: problema causa desconforto ou atrapalha a execução das funções.";
@@ -593,6 +593,7 @@ function infoSubmeter() {
       <form class="individual" action="index.html" display="none" method="post" id="ot">
         <select class="piso" name="Piso" id="esp.ot" onchange="mostrar()" onfocus="infoEspecialidade()">
           <option value=""></option>
+          <option value="">Estacionamento</option>
           <option value="">Farmácia</option>
           <option value="">Consumíveis</option>
           <option value="">Eletrodomésticos</option>
@@ -610,7 +611,6 @@ function infoSubmeter() {
         <select class="piso" name="Piso" id="esp.seg" onchange="mostrar()" onfocus="infoEspecialidade()">
           <option value=""></option>
           <option value="">Cartões/Acessos</option>
-          <option value="">Estacionamento</option>
           <option value="">Alarmes</option>
           <option value="">Carretéis</option>
           <option value="">Extintores</option>
