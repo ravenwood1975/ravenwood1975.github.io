@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="pt" dir="ltr">
 <head>
   <title>GEF - Participação de Sinistros</title>
   <meta charset="utf-8">
@@ -12,8 +12,33 @@
 </head>
 <body onload="atualizar()">
 
-  <style media="screen">
-
+  <style>
+  .notification-message-unread {
+    width: 1024px;
+    font-family: arial;
+    background-color: rgb(222,0,0);
+    color: white;
+    padding: 10px;
+    font-family: arial;
+    font-weight: bold;
+    font-size: 40px;
+    animation: blinker 1s linear infinite;
+  }
+  @keyframes blinker {
+    50% {
+      background-color: white;
+    }
+  }
+  img.ie{
+    display: block;
+    padding-left: 51px;
+    padding-right: 51px;
+    padding-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgb(222,0,0);
+    animation: blinker 1s linear infinite;
+  }
   img.veiculo {
     width: 400px;
   }
@@ -89,6 +114,7 @@
     font-family: arial;
     font-size: 8px;
   }
+
   div.grafico {
     -padding: 10px;
     -font-family: arial;
@@ -124,6 +150,10 @@
     margin-right: 10px;
     float: right
   }
+  input[type=checkbox] {
+    transform: scale(1.0);
+  }
+
   div.desc {
     width: 1024px;
     font-family: arial;
@@ -134,7 +164,7 @@
     font-weight: bold;
   }
   div.desc2 {
-    width: 1021px;
+    ;width: 1021px;
     font-family: arial;
     background-color: rgb(222,0,0);
     color: white;
@@ -163,32 +193,45 @@
     font-family: arial;
     width: 760px;
   }
+  textarea.obs {
+    ;width: 1021px;
+    height:100%;
+  }
   </style>
 
   <script type="text/javascript">
 
   function atualizar() {
-
+    permissão.style.display = "none";
+    permissãoie.style.display = "none";
+    
     var radios = document.getElementsByName('gender');
+
     for (var i = 0, length = radios.length; i < length; i++)
     {
       if (radios[i].checked)
       {
         // do whatever you want with the checked radio
         if(radios[i].value == "moto"){
-          moto.style.display = "block"
-          auto.style.display = "none"
-          var tipo = "Motociclo"
+          //alert("moto in");
+          document.getElementById('auto').style.width = '0px';
+          document.getElementById('moto').style.width = '350px';
+          var tipo = "Motociclo";
+          //alert("moto out");
         }
         if(radios[i].value == "auto"){
-          auto.style.display = "block"
-          moto.style.display = "none"
-          var tipo = "Automóvel"
+          //document.getElementById('moto').style.visibility='hidden';
+          document.getElementById('moto').style.width = '0px';
+          document.getElementById('auto').style.width = '350px';
+          var tipo = "Automóvel";
+          //alert(tipo)
         }
+                //  alert("veículo: "+tipo);
         // only one radio can be logically checked, don't check the rest
         break;
       }
     }
+        //alert("veículo: ");
     var e = document.getElementById("mat1").value;
     document.getElementById("mat1").value = e.toUpperCase();
     var e = document.getElementById("mat2").value;
@@ -262,24 +305,104 @@
     }
     /*alert(nome+"\n"+mec+"\n"+matrícula+"\n"+danos+"\n"+descrição,"Participação de Sinistros");*/
   }
+function testar() {
+        var radios = document.getElementsByName('gender');
+        for (var i = 0, length = radios.length; i < length; i++)
+        {
+          if (radios[i].checked)
+          {
+            if(radios[i].value == "moto"){
+              var tipo = "Motociclo";
+            }
+            if(radios[i].value == "auto"){
+              var tipo = "Automóvel";
+            }
+            break;
+          }
+        }
+  var radios = document.getElementsByName('gender');
+  var danos = ""
+  var nome = document.getElementById("nome").value;
+  var tamNome = nome.length;
+  qtdNomes = nome.split(" ").length;
+  var mec = document.getElementById("mec").value;
+  var tamMec = mec.length;
+  var primeiroMec = mec.substring(0,1)
+  var matrícula = document.getElementById("mat1").value+"-"+document.getElementById("mat2").value+"-"+document.getElementById("mat3").value;
+  var x = document.getElementById("danos.f").checked;
+  if (x==true) {
+    danos=danos+document.getElementById("danos.f").value+", "
+  }
+  var x = document.getElementById("danos.fd").checked;
+  if (x==true) {
+    danos=danos+document.getElementById("danos.fd").value+", "
+  }
+  var x = document.getElementById("danos.ldf").checked;
+  if (x==true) {
+    danos=danos+document.getElementById("danos.ldf").value+", "
+  }
+  var x = document.getElementById("danos.ld").checked;
+  if (x==true) {
+    danos=danos+document.getElementById("danos.ld").value+", "
+  }
+  var x = document.getElementById("danos.ldt").checked;
+  if (x==true) {
+    danos=danos+document.getElementById("danos.ldt").value+", "
+  }
+  var x = document.getElementById("danos.td").checked;
+  if (x==true) {
+    danos=danos+document.getElementById("danos.td").value+", "
+  }
+  var x = document.getElementById("danos.t").checked;
+  if (x==true) {
+    danos=danos+document.getElementById("danos.t").value+", "
+  }
+  var x = document.getElementById("danos.te").checked;
+  if (x==true) {
+    danos=danos+document.getElementById("danos.te").value+", "
+  }
+  var x = document.getElementById("danos.let").checked;
+  if (x==true) {
+    danos=danos+document.getElementById("danos.let").value+", "
+  }
+  var x = document.getElementById("danos.le").checked;
+  if (x==true) {
+    danos=danos+document.getElementById("danos.le").value+", "
+  }
+  var x = document.getElementById("danos.lef").checked;
+  if (x==true) {
+    danos=danos+document.getElementById("danos.lef").value+", "
+  }
+  var x = document.getElementById("danos.fe").checked;
+  if (x==true) {
+    danos=danos+document.getElementById("danos.fe").value+", "
+  }
+  tamDanos = danos.length
+  if (tamDanos>0) {
+    danos = danos.substring(0,(tamDanos-2))+"."
+  }
+  descrição = document.getElementById("descrição").value
+  //alert("nome: "+nome)
+  //alert("mecanográfico: "+mec)
+  //alert("matrícula: "+matrícula)
+  //alert("danos: "+danos)
+  //alert("descrição: "+descrição)
+  alert("tipo: "+tipo)
+  //alert(nome+"\n"+mec+"\n")//+tipo)//+"\n"+matrícula+"\n"+danos+"\n"+descrição)//,"Participação de Sinistros");
+}
+
   function submeter() {
     var radios = document.getElementsByName('gender');
     for (var i = 0, length = radios.length; i < length; i++)
     {
       if (radios[i].checked)
       {
-        // do whatever you want with the checked radio
         if(radios[i].value == "moto"){
-          moto.style.display = "block"
-          auto.style.display = "none"
-          var tipo = "Motociclo"
+          var tipo = "Motociclo";
         }
         if(radios[i].value == "auto"){
-          auto.style.display = "block"
-          moto.style.display = "none"
-          var tipo = "Automóvel"
+          var tipo = "Automóvel";
         }
-        // only one radio can be logically checked, don't check the rest
         break;
       }
     }
@@ -344,9 +467,13 @@
       danos = danos.substring(0,(tamDanos-2))+"."
     }
     descrição = document.getElementById("descrição").value
+
+  //  alert(nome+"\n"+mec+"\n"+tipo)//+"\n"+matrícula+"\n"+danos)//+"\n"+descrição)//,"Participação de Sinistros");
+
     if (nome != "" && mec != "" && matrícula != "" && danos !="" && descrição != "") {
 
       var alerta = ""
+
       if (tamMec<6 || tamMec>7) {
         var alerta = "N.º Mecanográfico invalido!";
         alert(alerta,"Participação de Sinistros");
@@ -356,26 +483,29 @@
         alert(alerta,"Participação de Sinistros");
       }
       if (alerta =="") {
-        alert(nome+"\n"+mec+"\n"+tipo+"\n"+matrícula+"\n"+danos+"\n"+descrição,"Participação de Sinistros");
+        //alert(nome+"\n"+mec+"\n"+tipo+"\n"+matrícula+"\n"+danos+"\n"+descrição,"Participação de Sinistros");
         var email = "mailto:"+"CaixaADefinir"+"@"+"ctt.pt?subject=Participação de Sinistro: "+encodeURIComponent(matrícula)+"&body=PARTICIPAÇÃO DE SINISTRO%0D%0A%0D%0ANOME: "+encodeURIComponent(nome)+" ("+encodeURIComponent(mec)+")%0D%0AMATRÍCULA: "+encodeURIComponent(matrícula)+" ("+encodeURIComponent(tipo)+")%0D%0A%0D%0ADANOS: "+encodeURIComponent(danos)+"%0D%0A%0D%0AOBSERVAÇÕES: "+encodeURIComponent(descrição)+"%0D%0A%0D%0A%0D%0A%0D%0A[ADICIONE OS ANEXOS NECESSÁRIOS ANTES DE ENVIAR A PARTICIPAÇÃO DE SINISTRO]";
         window.location.href = email;
-
-
       }
     }
     else {
       alert("Deverá preencher todos os campos!","Participação de Sinistros");
     }
-
+//setInterval("atualizar()",3000);
   }
   </script>
 
   <!---------------------------------------------------------------página-->
   <div class="pagina">
     <br>
-    <img src="sinistro-banner.jpg" alt="">
+    <img src="sinistro-banner.jpg" alt="" id="banner">
     <br><br>
     </<div class="">
+      <div class="notification-message-unread" id="permissão" align="center" >
+        ESTE FORMULÁRIO NECESSITA DE PERMISSÃO PARA EXECUTAR SCRIPTS!
+      </div>
+      <img src="ie.jpg" alt="" class="ie" id="permissãoie">
+
       <!---------------------------------------------------------------condutor-->
       <form class="longo" action="index.html" method="post">
         <div class="desc" id="descZona" align="center">
@@ -450,27 +580,27 @@
                 </div>
                 <div class="col-sm-2 ">
                   <div class="caixa">
-                    <input type="checkbox" name="vehicle1" value="Frente (Direita)" id="danos.fd" onclick="atualizar()">Frente (Direita)<br>
+                    <input class="check" type="checkbox" name="vehicle1" value="Frente (Direita)" id="danos.fd" onclick="atualizar()"> Frente (Direita)<br>
                   </div>
                 </div>
                 <div class="col-sm-2">
                   <div class="caixa">
-                    <input type="checkbox" name="vehicle1" value="Lateral direita (frente)" id="danos.ldf" onclick="atualizar()">Lateral direita (frente)<br>
+                    <input type="checkbox" name="vehicle1" value="Lateral direita (frente)" id="danos.ldf" onclick="atualizar()"> Lateral direita (frente)<br>
                   </div>
                 </div>
                 <div class="col-sm-2">
                   <div class="caixa">
-                    <input type="checkbox" name="vehicle1" value="Lateral direita" id="danos.ld" onclick="atualizar()">Lateral direita<br>
+                    <input type="checkbox" name="vehicle1" value="Lateral direita" id="danos.ld" onclick="atualizar()"> Lateral direita<br>
                   </div>
                 </div>
                 <div class="col-sm-2">
                   <div class="caixa">
-                    <input type="checkbox" name="vehicle1" value="Lateral direita (traseira)" id="danos.ldt" onclick="atualizar()">Lateral direita (traseira)<br>
+                    <input type="checkbox" name="vehicle1" value="Lateral direita (traseira)" id="danos.ldt" onclick="atualizar()"> Lateral direita (traseira)<br>
                   </div>
                 </div>
                 <div class="col-sm-2">
                   <div class="caixa">
-                    <input type="checkbox" name="vehicle1" value="Traseira (Direita)" id="danos.td" onclick="atualizar()">Traseira (Direita)<br>
+                    <input type="checkbox" name="vehicle1" value="Traseira (Direita)" id="danos.td" onclick="atualizar()"> Traseira (Direita)<br>
                   </div>
                 </div>
               </div>
@@ -484,8 +614,8 @@
                   </div>
                 </div>
                 <div class="col-sm-5">
-                  <img class="veículo" src="automóvel.jpg" alt="" id="auto">
-                  <img class="veículo" src="motociclo.jpg" alt="" id="moto">
+                    <img class="veículo" src="automóvel.jpg" alt="" id="auto">
+                    <img class="veículo" src="motociclo.jpg" alt="" id="moto">
                 </div>
                 <div class="col-sm-2 caixa2">
                   <input type="checkbox" name="vehicle1" value="Traseira" id="danos.t" onclick="atualizar()"> Traseira<br>
@@ -502,27 +632,27 @@
                 </div>
                 <div class="col-sm-2 ">
                   <div class="caixa">
-                    <input type="checkbox" name="vehicle1" value="Frente (Esquerda)" id="danos.fe" onclick="atualizar()">Frente (Esquerda)<br>
+                    <input type="checkbox" name="vehicle1" value="Frente (Esquerda)" id="danos.fe" onclick="atualizar()"> Frente (Esquerda)<br>
                   </div>
                 </div>
                 <div class="col-sm-2">
                   <div class="caixa">
-                    <input type="checkbox" name="vehicle1" value="Lateral esquerda (frente)" id="danos.lef" onclick="atualizar()">Lateral esquerda (frente)<br>
+                    <input type="checkbox" name="vehicle1" value="Lateral esquerda (frente)" id="danos.lef" onclick="atualizar()"> Lateral esquerda (frente)<br>
                   </div>
                 </div>
                 <div class="col-sm-2">
                   <div class="caixa">
-                    <input type="checkbox" name="vehicle1" value="Lateral esquerda" id="danos.le" onclick="atualizar()">Lateral esquerda<br>
+                    <input type="checkbox" name="vehicle1" value="Lateral esquerda" id="danos.le" onclick="atualizar()"> Lateral esquerda<br>
                   </div>
                 </div>
                 <div class="col-sm-2">
                   <div class="caixa">
-                    <input type="checkbox" name="vehicle1" value="Lateral esquerda (traseira)" id="danos.let" onclick="atualizar()">Lateral esquerda (traseira)<br>
+                    <input type="checkbox" name="vehicle1" value="Lateral esquerda (traseira)" id="danos.let" onclick="atualizar()"> Lateral esquerda (traseira)<br>
                   </div>
                 </div>
                 <div class="col-sm-2">
                   <div class="caixa">
-                    <input type="checkbox" name="vehicle1" value="Traseira (Esquerda)" id="danos.te" onclick="atualizar()">Traseira (Esquerda)<br>
+                    <input type="checkbox" name="vehicle1" value="Traseira (Esquerda)" id="danos.te" onclick="atualizar()"> Traseira (Esquerda)<br>
                   </div>
                 </div>
               </div>
@@ -533,19 +663,21 @@
 
       </div>
       <br>
+
       <div class="desc2" id="descZona" align="">
         OBSERVAÇÕES
       </div>
-      <textarea class=""  name="name" rows="5" cols="139" id="descrição" oninput="atualizar()" onfocus=""></textarea>
+      <textarea class="obs"  name="name" rows="5"  id="descrição" oninput="atualizar()" onfocus=""></textarea>
+
       <br><br>
       <div class="individual3" align="center">
         <br>
         <div class="submeter" align="center" onclick="submeter()" id="submeterPedido" onfocus="infoSubmeter()">
-          SUBMETER PEDIDO
+          SUBMETER PARTICIPAÇÃO
         </div>
         <br>
         <div class="foot" align="right">
-          FORMULÁRIO GEF SINISTROS v1.0
+          FORMULÁRIO GEF SINISTROS v1.1
         </div>
         <br><br>
 
