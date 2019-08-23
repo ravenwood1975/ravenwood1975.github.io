@@ -131,7 +131,7 @@
     height: 40px;
     padding: 10px;
     float: right;
-    text-transform: capitalize;
+    -text-transform: capitalize;
   }
   input.curto {
     width: 200px;
@@ -204,9 +204,8 @@
   function atualizar() {
     permissão.style.display = "none";
     permissãoie.style.display = "none";
-    
-    var radios = document.getElementsByName('gender');
 
+    var radios = document.getElementsByName('gender');
     for (var i = 0, length = radios.length; i < length; i++)
     {
       if (radios[i].checked)
@@ -240,9 +239,7 @@
     document.getElementById("mat3").value = e.toUpperCase();
     var danos = ""
     var nome = document.getElementById("nome").value;
-
     var mec = document.getElementById("mec").value;
-
     var matrícula = document.getElementById("mat1").value+"-"+document.getElementById("mat2").value+"-"+document.getElementById("mat3").value;
     var x = document.getElementById("danos.f").checked;
     if (x==true) {
@@ -305,91 +302,6 @@
     }
     /*alert(nome+"\n"+mec+"\n"+matrícula+"\n"+danos+"\n"+descrição,"Participação de Sinistros");*/
   }
-function testar() {
-        var radios = document.getElementsByName('gender');
-        for (var i = 0, length = radios.length; i < length; i++)
-        {
-          if (radios[i].checked)
-          {
-            if(radios[i].value == "moto"){
-              var tipo = "Motociclo";
-            }
-            if(radios[i].value == "auto"){
-              var tipo = "Automóvel";
-            }
-            break;
-          }
-        }
-  var radios = document.getElementsByName('gender');
-  var danos = ""
-  var nome = document.getElementById("nome").value;
-  var tamNome = nome.length;
-  qtdNomes = nome.split(" ").length;
-  var mec = document.getElementById("mec").value;
-  var tamMec = mec.length;
-  var primeiroMec = mec.substring(0,1)
-  var matrícula = document.getElementById("mat1").value+"-"+document.getElementById("mat2").value+"-"+document.getElementById("mat3").value;
-  var x = document.getElementById("danos.f").checked;
-  if (x==true) {
-    danos=danos+document.getElementById("danos.f").value+", "
-  }
-  var x = document.getElementById("danos.fd").checked;
-  if (x==true) {
-    danos=danos+document.getElementById("danos.fd").value+", "
-  }
-  var x = document.getElementById("danos.ldf").checked;
-  if (x==true) {
-    danos=danos+document.getElementById("danos.ldf").value+", "
-  }
-  var x = document.getElementById("danos.ld").checked;
-  if (x==true) {
-    danos=danos+document.getElementById("danos.ld").value+", "
-  }
-  var x = document.getElementById("danos.ldt").checked;
-  if (x==true) {
-    danos=danos+document.getElementById("danos.ldt").value+", "
-  }
-  var x = document.getElementById("danos.td").checked;
-  if (x==true) {
-    danos=danos+document.getElementById("danos.td").value+", "
-  }
-  var x = document.getElementById("danos.t").checked;
-  if (x==true) {
-    danos=danos+document.getElementById("danos.t").value+", "
-  }
-  var x = document.getElementById("danos.te").checked;
-  if (x==true) {
-    danos=danos+document.getElementById("danos.te").value+", "
-  }
-  var x = document.getElementById("danos.let").checked;
-  if (x==true) {
-    danos=danos+document.getElementById("danos.let").value+", "
-  }
-  var x = document.getElementById("danos.le").checked;
-  if (x==true) {
-    danos=danos+document.getElementById("danos.le").value+", "
-  }
-  var x = document.getElementById("danos.lef").checked;
-  if (x==true) {
-    danos=danos+document.getElementById("danos.lef").value+", "
-  }
-  var x = document.getElementById("danos.fe").checked;
-  if (x==true) {
-    danos=danos+document.getElementById("danos.fe").value+", "
-  }
-  tamDanos = danos.length
-  if (tamDanos>0) {
-    danos = danos.substring(0,(tamDanos-2))+"."
-  }
-  descrição = document.getElementById("descrição").value
-  //alert("nome: "+nome)
-  //alert("mecanográfico: "+mec)
-  //alert("matrícula: "+matrícula)
-  //alert("danos: "+danos)
-  //alert("descrição: "+descrição)
-  alert("tipo: "+tipo)
-  //alert(nome+"\n"+mec+"\n")//+tipo)//+"\n"+matrícula+"\n"+danos+"\n"+descrição)//,"Participação de Sinistros");
-}
 
   function submeter() {
     var radios = document.getElementsByName('gender');
@@ -484,7 +396,7 @@ function testar() {
       }
       if (alerta =="") {
         //alert(nome+"\n"+mec+"\n"+tipo+"\n"+matrícula+"\n"+danos+"\n"+descrição,"Participação de Sinistros");
-        var email = "mailto:"+"CaixaADefinir"+"@"+"ctt.pt?subject=Participação de Sinistro: "+encodeURIComponent(matrícula)+"&body=PARTICIPAÇÃO DE SINISTRO%0D%0A%0D%0ANOME: "+encodeURIComponent(nome)+" ("+encodeURIComponent(mec)+")%0D%0AMATRÍCULA: "+encodeURIComponent(matrícula)+" ("+encodeURIComponent(tipo)+")%0D%0A%0D%0ADANOS: "+encodeURIComponent(danos)+"%0D%0A%0D%0AOBSERVAÇÕES: "+encodeURIComponent(descrição)+"%0D%0A%0D%0A%0D%0A%0D%0A[ADICIONE OS ANEXOS NECESSÁRIOS ANTES DE ENVIAR A PARTICIPAÇÃO DE SINISTRO]";
+        var email = "mailto:"+"paulo.j.machado"+"@"+"ctt.pt?subject="+encodeURIComponent("#Participação de Sinistro: ")+encodeURIComponent(matrícula)+"&body=PARTICIPAÇÃO DE SINISTRO%0D%0A%0D%0ANOME: "+encodeURIComponent(nome)+"%0D%0AN.º MECANOGRÁFICO: "+encodeURIComponent(mec)+"%0D%0AMATRÍCULA: "+encodeURIComponent(matrícula)+"%0D%0ATIPO: "+encodeURIComponent(tipo)+"%0D%0ADANOS: "+encodeURIComponent(danos)+"%0D%0AOBSERVAÇÕES: "+encodeURIComponent(descrição)+"%0D%0A%0D%0A%0D%0A%0D%0A_____________________________________________________________________%0D%0AADICIONE OS ANEXOS NECESSÁRIOS ANTES DE ENVIAR A PARTICIPAÇÃO DE SINISTRO%0D%0A_____________________________________________________________________";
         window.location.href = email;
       }
     }
@@ -677,7 +589,7 @@ function testar() {
         </div>
         <br>
         <div class="foot" align="right">
-          FORMULÁRIO GEF SINISTROS v1.1
+          FORMULÁRIO GEF SINISTROS v1.0
         </div>
         <br><br>
 
