@@ -1,0 +1,1722 @@
+<!DOCTYPE html>
+<html lang="pt" dir="ltr">
+<head>
+	<title>SOLICITAÇÕES RECURSOS FÍSICOS - Pedido de Intervenção</title>
+	<meta charset="utf-8">
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+	<link rel='stylesheet' href='css/style.css'>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
+	<script>
+	// função para obter instalação de ficheiro externo
+	$(function() {
+		$("#text-two").load("instalações.txt");
+	});
+
+
+	function mostrar() {
+		var instalação = ""
+		var categoria = ""
+		var especialidade = ""
+		var objeto = ""
+		var urgência = ""
+		var descrição = ""
+		var radios = document.getElementsByName('gender');
+    for (var i = 0, length = radios.length; i < length; i++)
+    {
+      if (radios[i].checked)
+      {
+        // do whatever you want with the checked radio
+        if(radios[i].value == "novo"){
+          var tipo = "Novo pedido";
+        }
+        if(radios[i].value == "insistência"){
+          var tipo = "Insistência";
+        }
+				if(radios[i].value == "reclamação"){
+					var tipo = "Reclamação";
+				}
+        // only one radio can be logically checked, don't check the rest
+        break;
+      }
+    }
+		//avisos para permissão internet explorer
+		permissão.style.display = "none";
+		permissãoie.style.display = "none";
+
+		var e = document.getElementById("text-two");
+		var value = e.options[e.selectedIndex].value;
+		var instalação = e.options[e.selectedIndex].text;
+
+		var e = document.getElementById("categoria");
+		var value = e.options[e.selectedIndex].value;
+		var categoria = e.options[e.selectedIndex].text;
+
+		//alert(categoria);
+		especialidadeDefault.style.display = "block"
+		especialidadeGMT.style.display = "none"
+		especialidadeSEG.style.display = "none"
+
+		if(categoria==""){
+			especialidadeDefault.style.display = "block"
+			especialidadeGMT.style.display = "none"
+			especialidadeSEG.style.display = "none"
+			var especialidade = ""
+		}
+		if(categoria=="Manutenção"){
+			especialidadeDefault.style.display = "none"
+			especialidadeGMT.style.display = "block"
+			especialidadeSEG.style.display = "none"
+			var especialidade = ""
+		}
+		if(categoria=="Segurança"){
+			especialidadeDefault.style.display = "none"
+			especialidadeGMT.style.display = "none"
+			especialidadeSEG.style.display = "block"
+			var especialidade = ""
+		}
+		// OBJETO
+
+		defeito.style.display = "block"
+		cc.style.display = "none"
+		ie.style.display = "none"
+		ac.style.display = "none"
+		pe.style.display = "none"
+		ec.style.display = "none"
+		ot.style.display = "none"
+		cofres.style.display = "none"
+		cctv.style.display = "none"
+		intrusão.style.display = "none"
+		incêndio.style.display = "none"
+		furto.style.display = "none"
+		acessos.style.display = "none"
+		etv.style.display = "none"
+		mala.style.display = "none"
+		compras.style.display = "none"
+		outrosseg.style.display = "none"
+
+		if(categoria=="Manutenção"){
+			var e = document.getElementById("cat.especialidadeGMT");
+			var value = e.options[e.selectedIndex].value;
+			var especialidade = e.options[e.selectedIndex].text;
+		}
+
+		if(categoria=="Segurança"){
+			var e = document.getElementById("cat.especialidadeSEG");
+			var value = e.options[e.selectedIndex].value;
+			var especialidade = e.options[e.selectedIndex].text;
+		}
+
+		if(categoria==""){
+			var especialidade = "";
+		}
+
+		if(especialidade=="Construção Civil"){
+			defeito.style.display = "none"
+			cc.style.display = "block"
+			ie.style.display = "none"
+			ac.style.display = "none"
+			pe.style.display = "none"
+			ec.style.display = "none"
+			ot.style.display = "none"
+			cofres.style.display = "none"
+			cctv.style.display = "none"
+			intrusão.style.display = "none"
+			incêndio.style.display = "none"
+			furto.style.display = "none"
+			acessos.style.display = "none"
+			etv.style.display = "none"
+			mala.style.display = "none"
+			compras.style.display = "none"
+			outrosseg.style.display = "none"
+			var e = document.getElementById("esp.cc");
+			var value = e.options[e.selectedIndex].value;
+			var objeto = e.options[e.selectedIndex].text;
+		}
+
+		if(especialidade=="Eletricidade"){
+			defeito.style.display = "none"
+			cc.style.display = "none"
+			ie.style.display = "block"
+			ac.style.display = "none"
+			pe.style.display = "none"
+			ec.style.display = "none"
+			ot.style.display = "none"
+			cofres.style.display = "none"
+			cctv.style.display = "none"
+			intrusão.style.display = "none"
+			incêndio.style.display = "none"
+			furto.style.display = "none"
+			acessos.style.display = "none"
+			etv.style.display = "none"
+			mala.style.display = "none"
+			compras.style.display = "none"
+			outrosseg.style.display = "none"
+			var e = document.getElementById("esp.ie");
+			var value = e.options[e.selectedIndex].value;
+			var objeto = e.options[e.selectedIndex].text;
+		}
+
+		if(especialidade=="Ar Condicionado"){
+			defeito.style.display = "none"
+			cc.style.display = "none"
+			ie.style.display = "none"
+			ac.style.display = "block"
+			pe.style.display = "none"
+			ec.style.display = "none"
+			ot.style.display = "none"
+			cofres.style.display = "none"
+			cctv.style.display = "none"
+			intrusão.style.display = "none"
+			incêndio.style.display = "none"
+			furto.style.display = "none"
+			acessos.style.display = "none"
+			etv.style.display = "none"
+			mala.style.display = "none"
+			compras.style.display = "none"
+			outrosseg.style.display = "none"
+			var e = document.getElementById("esp.ac");
+			var value = e.options[e.selectedIndex].value;
+			var objeto = e.options[e.selectedIndex].text;
+		}
+
+		if(especialidade=="Elevadores"){
+			defeito.style.display = "none"
+			cc.style.display = "none"
+			ie.style.display = "none"
+			ac.style.display = "none"
+			pe.style.display = "block"
+			ec.style.display = "none"
+			ot.style.display = "none"
+			cofres.style.display = "none"
+			cctv.style.display = "none"
+			intrusão.style.display = "none"
+			incêndio.style.display = "none"
+			furto.style.display = "none"
+			acessos.style.display = "none"
+			etv.style.display = "none"
+			mala.style.display = "none"
+			compras.style.display = "none"
+			outrosseg.style.display = "none"
+			var e = document.getElementById("esp.pe");
+			var value = e.options[e.selectedIndex].value;
+			var objeto = e.options[e.selectedIndex].text;
+		}
+
+		if(especialidade=="Equipamentos de Correio"){
+			defeito.style.display = "none"
+			cc.style.display = "none"
+			ie.style.display = "none"
+			ac.style.display = "none"
+			pe.style.display = "none"
+			ec.style.display = "block"
+			ot.style.display = "none"
+			cofres.style.display = "none"
+			cctv.style.display = "none"
+			intrusão.style.display = "none"
+			incêndio.style.display = "none"
+			furto.style.display = "none"
+			acessos.style.display = "none"
+			etv.style.display = "none"
+			mala.style.display = "none"
+			compras.style.display = "none"
+			outrosseg.style.display = "none"
+			var e = document.getElementById("esp.ec");
+			var value = e.options[e.selectedIndex].value;
+			var objeto = e.options[e.selectedIndex].text;
+		}
+
+		if(especialidade=="Outros"){
+			defeito.style.display = "none"
+			cc.style.display = "none"
+			ie.style.display = "none"
+			ac.style.display = "none"
+			pe.style.display = "none"
+			ec.style.display = "none"
+			ot.style.display = "block"
+			cofres.style.display = "none"
+			cctv.style.display = "none"
+			intrusão.style.display = "none"
+			incêndio.style.display = "none"
+			furto.style.display = "none"
+			acessos.style.display = "none"
+			etv.style.display = "none"
+			mala.style.display = "none"
+			compras.style.display = "none"
+			outrosseg.style.display = "none"
+			var e = document.getElementById("esp.ot");
+			var value = e.options[e.selectedIndex].value;
+			var objeto = e.options[e.selectedIndex].text;
+		}
+
+		if(especialidade=="Cofres"){
+			defeito.style.display = "none"
+			cc.style.display = "none"
+			ie.style.display = "none"
+			ac.style.display = "none"
+			pe.style.display = "none"
+			ec.style.display = "none"
+			ot.style.display = "none"
+			cofres.style.display = "block"
+			cctv.style.display = "none"
+			intrusão.style.display = "none"
+			incêndio.style.display = "none"
+			furto.style.display = "none"
+			acessos.style.display = "none"
+			etv.style.display = "none"
+			mala.style.display = "none"
+			compras.style.display = "none"
+			outrosseg.style.display = "none"
+			var e = document.getElementById("esp.cofres");
+			var value = e.options[e.selectedIndex].value;
+			var objeto = e.options[e.selectedIndex].text;
+		}
+
+		if(especialidade=="CCTV"){
+			defeito.style.display = "none"
+			cc.style.display = "none"
+			ie.style.display = "none"
+			ac.style.display = "none"
+			pe.style.display = "none"
+			ec.style.display = "none"
+			ot.style.display = "none"
+			cofres.style.display = "none"
+			cctv.style.display = "block"
+			intrusão.style.display = "none"
+			incêndio.style.display = "none"
+			furto.style.display = "none"
+			acessos.style.display = "none"
+			etv.style.display = "none"
+			mala.style.display = "none"
+			compras.style.display = "none"
+			outrosseg.style.display = "none"
+			var e = document.getElementById("esp.cctv");
+			var value = e.options[e.selectedIndex].value;
+			var objeto = e.options[e.selectedIndex].text;
+		}
+
+		if(especialidade=="Intrusão"){
+			defeito.style.display = "none"
+			cc.style.display = "none"
+			ie.style.display = "none"
+			ac.style.display = "none"
+			pe.style.display = "none"
+			ec.style.display = "none"
+			ot.style.display = "none"
+			cofres.style.display = "none"
+			cctv.style.display = "none"
+			intrusão.style.display = "block"
+			incêndio.style.display = "none"
+			furto.style.display = "none"
+			acessos.style.display = "none"
+			etv.style.display = "none"
+			mala.style.display = "none"
+			compras.style.display = "none"
+			outrosseg.style.display = "none"
+			var e = document.getElementById("esp.cofres");
+			var value = e.options[e.selectedIndex].value;
+			var objeto = e.options[e.selectedIndex].text;
+		}
+
+		if(especialidade=="Incêndio"){
+			defeito.style.display = "none"
+			cc.style.display = "none"
+			ie.style.display = "none"
+			ac.style.display = "none"
+			pe.style.display = "none"
+			ec.style.display = "none"
+			ot.style.display = "none"
+			cofres.style.display = "none"
+			cctv.style.display = "none"
+			intrusão.style.display = "none"
+			incêndio.style.display = "block"
+			furto.style.display = "none"
+			acessos.style.display = "none"
+			etv.style.display = "none"
+			mala.style.display = "none"
+			compras.style.display = "none"
+			outrosseg.style.display = "none"
+			var e = document.getElementById("esp.incêndio");
+			var value = e.options[e.selectedIndex].value;
+			var objeto = e.options[e.selectedIndex].text;
+		}
+
+		if(especialidade=="Anti Furto"){
+			defeito.style.display = "none"
+			cc.style.display = "none"
+			ie.style.display = "none"
+			ac.style.display = "none"
+			pe.style.display = "none"
+			ec.style.display = "none"
+			ot.style.display = "none"
+			cofres.style.display = "none"
+			cctv.style.display = "none"
+			intrusão.style.display = "none"
+			incêndio.style.display = "none"
+			furto.style.display = "block"
+			acessos.style.display = "none"
+			etv.style.display = "none"
+			mala.style.display = "none"
+			compras.style.display = "none"
+			outrosseg.style.display = "none"
+			var e = document.getElementById("esp.furto");
+			var value = e.options[e.selectedIndex].value;
+			var objeto = e.options[e.selectedIndex].text;
+		}
+
+		if(especialidade=="Controlo de Acessos"){
+			defeito.style.display = "none"
+			cc.style.display = "none"
+			ie.style.display = "none"
+			ac.style.display = "none"
+			pe.style.display = "none"
+			ec.style.display = "none"
+			ot.style.display = "none"
+			cofres.style.display = "none"
+			cctv.style.display = "none"
+			intrusão.style.display = "none"
+			incêndio.style.display = "none"
+			furto.style.display = "none"
+			acessos.style.display = "block"
+			etv.style.display = "none"
+			mala.style.display = "none"
+			compras.style.display = "none"
+			outrosseg.style.display = "none"
+			var e = document.getElementById("esp.acessos");
+			var value = e.options[e.selectedIndex].value;
+			var objeto = e.options[e.selectedIndex].text;
+		}
+
+		if(especialidade=="ETV"){
+			defeito.style.display = "none"
+			cc.style.display = "none"
+			ie.style.display = "none"
+			ac.style.display = "none"
+			pe.style.display = "none"
+			ec.style.display = "none"
+			ot.style.display = "none"
+			cofres.style.display = "none"
+			cctv.style.display = "none"
+			intrusão.style.display = "none"
+			incêndio.style.display = "none"
+			furto.style.display = "none"
+			acessos.style.display = "none"
+			etv.style.display = "block"
+			mala.style.display = "none"
+			compras.style.display = "none"
+			outrosseg.style.display = "none"
+			var e = document.getElementById("esp.etv");
+			var value = e.options[e.selectedIndex].value;
+			var objeto = e.options[e.selectedIndex].text;
+		}
+
+		if(especialidade=="Mala Meta"){
+			defeito.style.display = "none"
+			cc.style.display = "none"
+			ie.style.display = "none"
+			ac.style.display = "none"
+			pe.style.display = "none"
+			ec.style.display = "none"
+			ot.style.display = "none"
+			cofres.style.display = "none"
+			cctv.style.display = "none"
+			intrusão.style.display = "none"
+			incêndio.style.display = "none"
+			furto.style.display = "none"
+			acessos.style.display = "none"
+			etv.style.display = "none"
+			mala.style.display = "block"
+			compras.style.display = "none"
+			outrosseg.style.display = "none"
+			var e = document.getElementById("esp.mala");
+			var value = e.options[e.selectedIndex].value;
+			var objeto = e.options[e.selectedIndex].text;
+		}
+
+		if(especialidade=="Interação Compras e Logística"){
+			defeito.style.display = "none"
+			cc.style.display = "none"
+			ie.style.display = "none"
+			ac.style.display = "none"
+			pe.style.display = "none"
+			ec.style.display = "none"
+			ot.style.display = "none"
+			cofres.style.display = "none"
+			cctv.style.display = "none"
+			intrusão.style.display = "none"
+			incêndio.style.display = "none"
+			furto.style.display = "none"
+			acessos.style.display = "none"
+			etv.style.display = "none"
+			mala.style.display = "none"
+			compras.style.display = "block"
+			outrosseg.style.display = "none"
+			var e = document.getElementById("esp.compras");
+			var value = e.options[e.selectedIndex].value;
+			var objeto = e.options[e.selectedIndex].text;
+		}
+
+		if(especialidade=="Outros"){
+			defeito.style.display = "none"
+			cc.style.display = "none"
+			ie.style.display = "none"
+			ac.style.display = "none"
+			pe.style.display = "none"
+			ec.style.display = "none"
+			ot.style.display = "none"
+			cofres.style.display = "none"
+			cctv.style.display = "none"
+			intrusão.style.display = "none"
+			incêndio.style.display = "none"
+			furto.style.display = "none"
+			acessos.style.display = "none"
+			etv.style.display = "none"
+			mala.style.display = "none"
+			compras.style.display = "none"
+			outrosseg.style.display = "block"
+			var e = document.getElementById("esp.outrosseg");
+			var value = e.options[e.selectedIndex].value;
+			var objeto = e.options[e.selectedIndex].text;
+		}
+
+		if(objeto!="" & objeto!="undefined"){
+			//alert(objeto);
+		}
+
+		var e = document.getElementById("urgência");
+		var value = e.options[e.selectedIndex].value;
+		var urgência = e.options[e.selectedIndex].text;
+		var descrição = document.getElementById("descrição").value;
+		if (instalação !="" && categoria !="" && especialidade !="" && objeto !="" && urgência !="" && descrição !=""){
+			document.getElementById("submeterPedido").style.backgroundColor = "rgb(222,0,0)";
+			document.getElementById("instruções").style.backgroundColor = "#bbb";
+			document.getElementById("instruções1").textContent = "Todos os campos estão preenchidos, pode submeter o pedido!";
+			document.getElementById("instruções2").textContent = "Será gerado um novo email com os dados indicados - poderá adicionar anexos antes de enviar.";
+		}
+		else {
+			document.getElementById("submeterPedido").style.backgroundColor = "#bbb";
+			document.getElementById("instruções").style.backgroundColor = "rgb(222,0,0)";
+			document.getElementById("instruções1").textContent = "Deve preencher todos os campos para";
+			document.getElementById("instruções2").textContent = "desbloquear a opção SUBMETER PEDIDO.";
+		}
+		document.getElementById("dados1").textContent = tipo+"/"+instalação+"/"+categoria+"/"+especialidade+"/"+objeto+"/"+urgência+"/"+descrição;
+		//if (instalação !="") {
+		//  document.getElementById("descInstalação").style.backgroundColor = "#bbb";
+		//}
+		//else {
+		//  document.getElementById("descInstalação").style.backgroundColor = "rgb(222,0,0)";
+		//}
+
+	}
+
+	function submeter() {
+		var radios = document.getElementsByName('gender');
+    for (var i = 0, length = radios.length; i < length; i++)
+    {
+      if (radios[i].checked)
+      {
+        // do whatever you want with the checked radio
+        if(radios[i].value == "novo"){
+          var tipo = "Novo pedido";
+        }
+        if(radios[i].value == "insistência"){
+          var tipo = "Insistência";
+        }
+				if(radios[i].value == "reclamação"){
+					var tipo = "Reclamação";
+				}
+        // only one radio can be logically checked, don't check the rest
+        break;
+      }
+    }
+
+		var e = document.getElementById("text-two");
+		var value = e.options[e.selectedIndex].value;
+		var instalação = e.options[e.selectedIndex].text;
+
+		var e = document.getElementById("categoria");
+		var value = e.options[e.selectedIndex].value;
+		var categoria = e.options[e.selectedIndex].text;
+
+		//alert(categoria);
+		especialidadeDefault.style.display = "block"
+		especialidadeGMT.style.display = "none"
+		especialidadeSEG.style.display = "none"
+
+		if(categoria==""){
+			especialidadeDefault.style.display = "block"
+			especialidadeGMT.style.display = "none"
+			especialidadeSEG.style.display = "none"
+			var especialidade = ""
+		}
+		if(categoria=="Manutenção"){
+			especialidadeDefault.style.display = "none"
+			especialidadeGMT.style.display = "block"
+			especialidadeSEG.style.display = "none"
+			var especialidade = ""
+		}
+		if(categoria=="Segurança"){
+			especialidadeDefault.style.display = "none"
+			especialidadeGMT.style.display = "none"
+			especialidadeSEG.style.display = "block"
+			var especialidade = ""
+		}
+		// OBJETO
+
+		defeito.style.display = "block"
+		cc.style.display = "none"
+		ie.style.display = "none"
+		ac.style.display = "none"
+		pe.style.display = "none"
+		ec.style.display = "none"
+		ot.style.display = "none"
+		cofres.style.display = "none"
+		cctv.style.display = "none"
+		intrusão.style.display = "none"
+		incêndio.style.display = "none"
+		furto.style.display = "none"
+		acessos.style.display = "none"
+		etv.style.display = "none"
+		mala.style.display = "none"
+		compras.style.display = "none"
+		outrosseg.style.display = "none"
+
+		if(categoria=="Manutenção"){
+			var e = document.getElementById("cat.especialidadeGMT");
+			var value = e.options[e.selectedIndex].value;
+			var especialidade = e.options[e.selectedIndex].text;
+		}
+
+		if(categoria=="Segurança"){
+			var e = document.getElementById("cat.especialidadeSEG");
+			var value = e.options[e.selectedIndex].value;
+			var especialidade = e.options[e.selectedIndex].text;
+		}
+
+		if(categoria==""){
+			var especialidade = "";
+		}
+
+		if(especialidade=="Construção Civil"){
+			defeito.style.display = "none"
+			cc.style.display = "block"
+			ie.style.display = "none"
+			ac.style.display = "none"
+			pe.style.display = "none"
+			ec.style.display = "none"
+			ot.style.display = "none"
+			cofres.style.display = "none"
+			cctv.style.display = "none"
+			intrusão.style.display = "none"
+			incêndio.style.display = "none"
+			furto.style.display = "none"
+			acessos.style.display = "none"
+			etv.style.display = "none"
+			mala.style.display = "none"
+			compras.style.display = "none"
+			outrosseg.style.display = "none"
+			var e = document.getElementById("esp.cc");
+			var value = e.options[e.selectedIndex].value;
+			var objeto = e.options[e.selectedIndex].text;
+		}
+
+		if(especialidade=="Eletricidade"){
+			defeito.style.display = "none"
+			cc.style.display = "none"
+			ie.style.display = "block"
+			ac.style.display = "none"
+			pe.style.display = "none"
+			ec.style.display = "none"
+			ot.style.display = "none"
+			cofres.style.display = "none"
+			cctv.style.display = "none"
+			intrusão.style.display = "none"
+			incêndio.style.display = "none"
+			furto.style.display = "none"
+			acessos.style.display = "none"
+			etv.style.display = "none"
+			mala.style.display = "none"
+			compras.style.display = "none"
+			outrosseg.style.display = "none"
+			var e = document.getElementById("esp.ie");
+			var value = e.options[e.selectedIndex].value;
+			var objeto = e.options[e.selectedIndex].text;
+		}
+
+		if(especialidade=="Ar Condicionado"){
+			defeito.style.display = "none"
+			cc.style.display = "none"
+			ie.style.display = "none"
+			ac.style.display = "block"
+			pe.style.display = "none"
+			ec.style.display = "none"
+			ot.style.display = "none"
+			cofres.style.display = "none"
+			cctv.style.display = "none"
+			intrusão.style.display = "none"
+			incêndio.style.display = "none"
+			furto.style.display = "none"
+			acessos.style.display = "none"
+			etv.style.display = "none"
+			mala.style.display = "none"
+			compras.style.display = "none"
+			outrosseg.style.display = "none"
+			var e = document.getElementById("esp.ac");
+			var value = e.options[e.selectedIndex].value;
+			var objeto = e.options[e.selectedIndex].text;
+		}
+
+		if(especialidade=="Elevadores"){
+			defeito.style.display = "none"
+			cc.style.display = "none"
+			ie.style.display = "none"
+			ac.style.display = "none"
+			pe.style.display = "block"
+			ec.style.display = "none"
+			ot.style.display = "none"
+			cofres.style.display = "none"
+			cctv.style.display = "none"
+			intrusão.style.display = "none"
+			incêndio.style.display = "none"
+			furto.style.display = "none"
+			acessos.style.display = "none"
+			etv.style.display = "none"
+			mala.style.display = "none"
+			compras.style.display = "none"
+			outrosseg.style.display = "none"
+			var e = document.getElementById("esp.pe");
+			var value = e.options[e.selectedIndex].value;
+			var objeto = e.options[e.selectedIndex].text;
+		}
+
+		if(especialidade=="Equipamentos de Correio"){
+			defeito.style.display = "none"
+			cc.style.display = "none"
+			ie.style.display = "none"
+			ac.style.display = "none"
+			pe.style.display = "none"
+			ec.style.display = "block"
+			ot.style.display = "none"
+			cofres.style.display = "none"
+			cctv.style.display = "none"
+			intrusão.style.display = "none"
+			incêndio.style.display = "none"
+			furto.style.display = "none"
+			acessos.style.display = "none"
+			etv.style.display = "none"
+			mala.style.display = "none"
+			compras.style.display = "none"
+			outrosseg.style.display = "none"
+			var e = document.getElementById("esp.ec");
+			var value = e.options[e.selectedIndex].value;
+			var objeto = e.options[e.selectedIndex].text;
+		}
+
+		if(especialidade=="Outros"){
+			defeito.style.display = "none"
+			cc.style.display = "none"
+			ie.style.display = "none"
+			ac.style.display = "none"
+			pe.style.display = "none"
+			ec.style.display = "none"
+			ot.style.display = "block"
+			cofres.style.display = "none"
+			cctv.style.display = "none"
+			intrusão.style.display = "none"
+			incêndio.style.display = "none"
+			furto.style.display = "none"
+			acessos.style.display = "none"
+			etv.style.display = "none"
+			mala.style.display = "none"
+			compras.style.display = "none"
+			outrosseg.style.display = "none"
+			var e = document.getElementById("esp.ot");
+			var value = e.options[e.selectedIndex].value;
+			var objeto = e.options[e.selectedIndex].text;
+		}
+
+		if(especialidade=="Cofres"){
+			defeito.style.display = "none"
+			cc.style.display = "none"
+			ie.style.display = "none"
+			ac.style.display = "none"
+			pe.style.display = "none"
+			ec.style.display = "none"
+			ot.style.display = "none"
+			cofres.style.display = "block"
+			cctv.style.display = "none"
+			intrusão.style.display = "none"
+			incêndio.style.display = "none"
+			furto.style.display = "none"
+			acessos.style.display = "none"
+			etv.style.display = "none"
+			mala.style.display = "none"
+			compras.style.display = "none"
+			outrosseg.style.display = "none"
+			var e = document.getElementById("esp.cofres");
+			var value = e.options[e.selectedIndex].value;
+			var objeto = e.options[e.selectedIndex].text;
+		}
+
+		if(especialidade=="CCTV"){
+			defeito.style.display = "none"
+			cc.style.display = "none"
+			ie.style.display = "none"
+			ac.style.display = "none"
+			pe.style.display = "none"
+			ec.style.display = "none"
+			ot.style.display = "none"
+			cofres.style.display = "none"
+			cctv.style.display = "block"
+			intrusão.style.display = "none"
+			incêndio.style.display = "none"
+			furto.style.display = "none"
+			acessos.style.display = "none"
+			etv.style.display = "none"
+			mala.style.display = "none"
+			compras.style.display = "none"
+			outrosseg.style.display = "none"
+			var e = document.getElementById("esp.cctv");
+			var value = e.options[e.selectedIndex].value;
+			var objeto = e.options[e.selectedIndex].text;
+		}
+
+		if(especialidade=="Intrusão"){
+			defeito.style.display = "none"
+			cc.style.display = "none"
+			ie.style.display = "none"
+			ac.style.display = "none"
+			pe.style.display = "none"
+			ec.style.display = "none"
+			ot.style.display = "none"
+			cofres.style.display = "none"
+			cctv.style.display = "none"
+			intrusão.style.display = "block"
+			incêndio.style.display = "none"
+			furto.style.display = "none"
+			acessos.style.display = "none"
+			etv.style.display = "none"
+			mala.style.display = "none"
+			compras.style.display = "none"
+			outrosseg.style.display = "none"
+			var e = document.getElementById("esp.cofres");
+			var value = e.options[e.selectedIndex].value;
+			var objeto = e.options[e.selectedIndex].text;
+		}
+
+		if(especialidade=="Incêndio"){
+			defeito.style.display = "none"
+			cc.style.display = "none"
+			ie.style.display = "none"
+			ac.style.display = "none"
+			pe.style.display = "none"
+			ec.style.display = "none"
+			ot.style.display = "none"
+			cofres.style.display = "none"
+			cctv.style.display = "none"
+			intrusão.style.display = "none"
+			incêndio.style.display = "block"
+			furto.style.display = "none"
+			acessos.style.display = "none"
+			etv.style.display = "none"
+			mala.style.display = "none"
+			compras.style.display = "none"
+			outrosseg.style.display = "none"
+			var e = document.getElementById("esp.incêndio");
+			var value = e.options[e.selectedIndex].value;
+			var objeto = e.options[e.selectedIndex].text;
+		}
+
+		if(especialidade=="Anti Furto"){
+			defeito.style.display = "none"
+			cc.style.display = "none"
+			ie.style.display = "none"
+			ac.style.display = "none"
+			pe.style.display = "none"
+			ec.style.display = "none"
+			ot.style.display = "none"
+			cofres.style.display = "none"
+			cctv.style.display = "none"
+			intrusão.style.display = "none"
+			incêndio.style.display = "none"
+			furto.style.display = "block"
+			acessos.style.display = "none"
+			etv.style.display = "none"
+			mala.style.display = "none"
+			compras.style.display = "none"
+			outrosseg.style.display = "none"
+			var e = document.getElementById("esp.furto");
+			var value = e.options[e.selectedIndex].value;
+			var objeto = e.options[e.selectedIndex].text;
+		}
+
+		if(especialidade=="Controlo de Acessos"){
+			defeito.style.display = "none"
+			cc.style.display = "none"
+			ie.style.display = "none"
+			ac.style.display = "none"
+			pe.style.display = "none"
+			ec.style.display = "none"
+			ot.style.display = "none"
+			cofres.style.display = "none"
+			cctv.style.display = "none"
+			intrusão.style.display = "none"
+			incêndio.style.display = "none"
+			furto.style.display = "none"
+			acessos.style.display = "block"
+			etv.style.display = "none"
+			mala.style.display = "none"
+			compras.style.display = "none"
+			outrosseg.style.display = "none"
+			var e = document.getElementById("esp.acessos");
+			var value = e.options[e.selectedIndex].value;
+			var objeto = e.options[e.selectedIndex].text;
+		}
+
+		if(especialidade=="ETV"){
+			defeito.style.display = "none"
+			cc.style.display = "none"
+			ie.style.display = "none"
+			ac.style.display = "none"
+			pe.style.display = "none"
+			ec.style.display = "none"
+			ot.style.display = "none"
+			cofres.style.display = "none"
+			cctv.style.display = "none"
+			intrusão.style.display = "none"
+			incêndio.style.display = "none"
+			furto.style.display = "none"
+			acessos.style.display = "none"
+			etv.style.display = "block"
+			mala.style.display = "none"
+			compras.style.display = "none"
+			outrosseg.style.display = "none"
+			var e = document.getElementById("esp.etv");
+			var value = e.options[e.selectedIndex].value;
+			var objeto = e.options[e.selectedIndex].text;
+		}
+
+		if(especialidade=="Mala Meta"){
+			defeito.style.display = "none"
+			cc.style.display = "none"
+			ie.style.display = "none"
+			ac.style.display = "none"
+			pe.style.display = "none"
+			ec.style.display = "none"
+			ot.style.display = "none"
+			cofres.style.display = "none"
+			cctv.style.display = "none"
+			intrusão.style.display = "none"
+			incêndio.style.display = "none"
+			furto.style.display = "none"
+			acessos.style.display = "none"
+			etv.style.display = "none"
+			mala.style.display = "block"
+			compras.style.display = "none"
+			outrosseg.style.display = "none"
+			var e = document.getElementById("esp.mala");
+			var value = e.options[e.selectedIndex].value;
+			var objeto = e.options[e.selectedIndex].text;
+		}
+
+		if(especialidade=="Interação Compras e Logística"){
+			defeito.style.display = "none"
+			cc.style.display = "none"
+			ie.style.display = "none"
+			ac.style.display = "none"
+			pe.style.display = "none"
+			ec.style.display = "none"
+			ot.style.display = "none"
+			cofres.style.display = "none"
+			cctv.style.display = "none"
+			intrusão.style.display = "none"
+			incêndio.style.display = "none"
+			furto.style.display = "none"
+			acessos.style.display = "none"
+			etv.style.display = "none"
+			mala.style.display = "none"
+			compras.style.display = "block"
+			outrosseg.style.display = "none"
+			var e = document.getElementById("esp.compras");
+			var value = e.options[e.selectedIndex].value;
+			var objeto = e.options[e.selectedIndex].text;
+		}
+
+		if(especialidade=="Outros"){
+			defeito.style.display = "none"
+			cc.style.display = "none"
+			ie.style.display = "none"
+			ac.style.display = "none"
+			pe.style.display = "none"
+			ec.style.display = "none"
+			ot.style.display = "none"
+			cofres.style.display = "none"
+			cctv.style.display = "none"
+			intrusão.style.display = "none"
+			incêndio.style.display = "none"
+			furto.style.display = "none"
+			acessos.style.display = "none"
+			etv.style.display = "none"
+			mala.style.display = "none"
+			compras.style.display = "none"
+			outrosseg.style.display = "block"
+			var e = document.getElementById("esp.outrosseg");
+			var value = e.options[e.selectedIndex].value;
+			var objeto = e.options[e.selectedIndex].text;
+		}
+
+		if(objeto!="" & objeto!="undefined"){
+			//alert(objeto);
+		}
+
+		var e = document.getElementById("urgência");
+		var value = e.options[e.selectedIndex].value;
+		var urgência = e.options[e.selectedIndex].text;
+		var descrição = document.getElementById("descrição").value;
+		if (instalação !="" && categoria !="" && especialidade !="" && objeto !="" && urgência !="" && descrição !=""){
+			document.getElementById("submeterPedido").style.backgroundColor = "rgb(222,0,0)";
+			document.getElementById("instruções").style.backgroundColor = "#bbb";
+			document.getElementById("instruções1").textContent = "Todos os campos estão preenchidos, pode submeter o pedido!";
+			document.getElementById("instruções2").textContent = "Será gerado um novo email com os dados indicados - poderá adicionar anexos antes de enviar.";
+		}
+		else {
+			document.getElementById("submeterPedido").style.backgroundColor = "#bbb";
+			document.getElementById("instruções").style.backgroundColor = "rgb(222,0,0)";
+			document.getElementById("instruções1").textContent = "Deve preencher todos os campos para";
+			document.getElementById("instruções2").textContent = "desbloquear a opção SUBMETER PEDIDO.";
+		}
+
+		if (instalação !="" && categoria !="" && especialidade !="" && objeto !="" && urgência !="" && descrição !=""){
+			var assunto = "mailto:"+"imotalismaservice"+"@"+"ctt.pt?subject="+encodeURIComponent(categoria)+" "+encodeURIComponent(especialidade)+"/"+encodeURIComponent(objeto)+" - "+encodeURIComponent(urgência)+" - ["+encodeURIComponent(instalação)+"] - "+encodeURIComponent(tipo);
+			var corpo = "&body=SOLICITAÇÕES RECURSOS FÍSICOS%0D%0A%0D%0AINSTALAÇÃO: "+encodeURIComponent(instalação)+"%0D%0ACATEGORIA: "+encodeURIComponent(categoria)+"%0D%0AESPECIALIDADE: "+encodeURIComponent(especialidade)+"%0D%0AOBJETO: "+encodeURIComponent(objeto)+"%0D%0AURGÊNCIA: "+encodeURIComponent(urgência)+"%0D%0A%0D%0ADESCRIÇÃO:%0D%0A"+encodeURIComponent(descrição)+"%0D%0A%0D%0A%0D%0A%0D%0A____________________________________________%0D%0APODE ADICIONAR ANEXOS ANTES DE ENVIAR O EMAIL";
+			var email = assunto+corpo;
+			window.location.href = email;
+			document.getElementById("especialidade").value = ""
+			var especilidade = ""
+			document.getElementById("esp.cc").value = ""
+			document.getElementById("esp.ie").value = ""
+			document.getElementById("esp.ac").value = ""
+			document.getElementById("esp.pe").value = ""
+			document.getElementById("esp.ot").value = ""
+			document.getElementById("esp.seg").value = ""
+			var objeto = ""
+			document.getElementById("urgência").value = ""
+			var urgência = ""
+			document.getElementById("descrição").value = ""
+			var descrição = ""
+			document.getElementById("submeterPedido").style.backgroundColor = "#bbb";
+			document.getElementById("instruções").style.backgroundColor = "rgb(222,0,0)";
+			document.getElementById("instruções1").textContent = "Deverá preencher todos os campos para";
+			document.getElementById("instruções2").textContent = "desbloquear a opção SUBMETER PEDIDO.";
+			document.getElementById("descEspecialidade").style.backgroundColor = "rgb(222,0,0)";
+			document.getElementById("descUrgência").style.backgroundColor = "rgb(222,0,0)";
+			document.getElementById("descDescrição").style.backgroundColor = "rgb(222,0,0)";
+			document.getElementById("descObjetoCC").style.backgroundColor = "rgb(222,0,0)";
+			document.getElementById("descObjetoIE").style.backgroundColor = "rgb(222,0,0)";
+			document.getElementById("descObjetoAC").style.backgroundColor = "rgb(222,0,0)";
+			document.getElementById("descObjetoPE").style.backgroundColor = "rgb(222,0,0)";
+			document.getElementById("descObjetoOT").style.backgroundColor = "rgb(222,0,0)";
+			document.getElementById("descObjetoSEG").style.backgroundColor = "rgb(222,0,0)";
+		}
+		else {
+			alert("É necessário preencher todos os campos antes de submeter o pedido!");//tipo+"/"+instalação+"/"+categoria+"/"+especialidade+"/"+objeto+"/"+urgência+"/"+descrição) //"É necessário preencher todos os campos antes de submeter o pedido!");
+		}
+	}
+
+	function infoInstalação() {
+		document.getElementById("instruções1").textContent = "Selecione uma instalação da lista.";
+		document.getElementById("instruções2").textContent = "Pode pesquisar digitando o nome da instalação.";
+	}
+	function infoCategoria() {
+		document.getElementById("instruções1").textContent = "Indique a categoria do pedido,";
+		document.getElementById("instruções2").textContent = "MANUTENÇÃO ou SEGURANÇA.";
+	}
+	function infoEspecialidade() {
+		document.getElementById("instruções1").textContent = "Indique a especialidade pretendida.";
+		document.getElementById("instruções2").textContent = "A lista apresentada está dependente da categoria indicada acima.";
+	}
+	function infoObjeto() {
+		document.getElementById("instruções1").textContent = "Indique o objeto do problema.";
+		document.getElementById("instruções2").textContent = "Os objetos disponíveis estão dependentes da especialidade indicada.";
+	}
+	function infoUrgência() {
+		document.getElementById("instruções1").textContent = "NORMAL: deverá ser resolvido assim que possível. URGENTE: problema causa desconforto ou atrapalha a execução das funções.";
+		document.getElementById("instruções2").textContent = " EMERGENTE: a saúde ou segurança de pessoas e bens está em causa ou problema impede realização de funções.";
+	}
+	function infoDescrição() {
+		document.getElementById("instruções1").textContent = "Deverá indicar toda a informação que considere relevante para a resolução do problema.";
+		document.getElementById("instruções2").textContent = "Detalhes como local exato, horário ou outros poderão contribuir para a rápida resolução do problema.";
+	}
+	function infoSubmeter() {
+		document.getElementById("instruções1").textContent = "Deve preencher todos os campos para";
+		document.getElementById("instruções2").textContent = "desbloquear a opção SUBMETER PEDIDO.";
+	}
+	</script>
+</head>
+
+<style>
+.notification-message-unread {
+	width: 1004px;
+	font-family: arial;
+	background-color: rgb(222,0,0);
+	color: white;
+	padding: 10px;
+	font-family: arial;
+	font-weight: bold;
+	font-size: 40px;
+	animation: blinker 1s linear infinite;
+}
+@keyframes blinker {
+	50% {
+		background-color: white;
+	}
+}
+.desc {
+	float: right;
+	font-family: arial;
+	width: 787px;
+}
+img.planta {
+	float: right;
+	width: 560px;
+}
+img.ie{
+	display: block;
+	padding-left: 51px;
+	padding-right: 51px;
+	padding-bottom: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: rgb(222,0,0);
+	animation: blinker 1s linear infinite;
+}
+.desc2 {
+	width: 1004px;
+	font-family: arial;
+	background-color: rgb(222,0,0);
+	color: white;
+	padding: 10px;
+	margin-top: 10px;
+	font-family: arial;
+}
+.desc3 {
+	width: 1004px;
+	font-family: arial;
+	background-color: rgb(222,0,0);
+	color: white;
+	padding: 10px;
+	font-family: arial;
+	font-weight: bold;
+	font-size: 40px;
+}
+div.pagina {
+	max-width: 1024px;
+	margin: auto;
+}
+div.global {
+	width: 1024px;
+}
+form.individual {
+	width: 1024px;
+	padding-top: 10px;
+}
+form.radioBase {
+	width: 1024px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border: .1em solid rgba(0, 0, 0, .75);
+}
+form.individual2 {
+	width: 1024px;
+	padding-top: 10px;
+}
+div.individual3 {
+	width: 1024px;
+}
+div.individual {
+	width: 200px;
+	background-color: rgb(222,0,0);
+	color: white;
+	padding: 10px;
+	font-family: arial;
+	font-weight: bold;
+}
+div.individualradio {
+	width: 310px;
+	background-color: rgb(222,0,0);
+	color: white;
+	padding: 5px;
+	-padding-right: 80px;
+	-padding-bottom: 10px;
+	font-family: arial;
+	font-weight: bold;
+	float: right;
+	margin-right: 10px;
+	margin-left: 10px;
+	-margin-bottom: 10px;
+	text-align: center;
+}
+div.foot {
+	padding: 10px;
+	font-family: arial;
+	font-size: 8px;
+}
+
+input.radios {
+	-background: none repeat scroll 0 0 #94E325;
+	-border-radius: 50px;
+	-box-shadow: 0 0 10px rgba(0, 0, 0, 0.3) inset;
+	-content: " ";
+	-font-size: 336px;
+	-height: 8px;
+	-left: 7px;
+	-position: absolute;
+	-top: 7px;
+	-width: 80px;
+}
+
+div.erro {
+	width: 200px;
+	background-color: #bbb;
+	color: white;
+	padding: 10px;
+	font-family: arial;
+	font-weight: bold;
+}
+div.submeter {
+	width: 200px;
+	background-color: rgb(222,0,0);
+	color: white;
+	padding: 10px;
+	font-family: arial;
+	font-weight: bold;
+	cursor: pointer;
+}
+.resultados {
+	width: 1000px;
+	height: 100px;
+	background-color: blue;
+	color: white;
+	padding: 10px;
+	font-family: arial;
+	font-weight: bold;
+}
+select {
+	width: 794px;
+	padding: 10px;
+	float: right
+}
+a:link, a:visited {
+	width: 170px;
+  background-color: rgb(222,0,0);
+  color: white;
+  padding: 15px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+	font-family: arial;
+	font-weight: bold;
+	font-size: 12px;
+}
+
+a:hover, a:active {
+  background-color: red;
+}
+</style>
+
+<body>
+	<body onload="mostrar()" onfocus="infoSubmeter()">
+		<div class="pagina">
+			<br>
+			<img src="srf-banner.jpg" alt="">
+			<div class="notification-message-unread" id="permissão" align="center" >
+				ESTE FORMULÁRIO NECESSITA DE PERMISSÃO PARA EXECUTAR SCRIPTS!
+			</div>
+			<img src="ie.jpg" alt="" class="ie" id="permissãoie">
+
+			<div align="center" class="desc2" id="instruções">
+				<span id="instruções1">
+					Deve preencher todos os campos para
+				</span>
+				<br>
+				<span id="instruções2">
+					desbloquear a opção SUBMETER PEDIDO.
+				</span>
+			</div>
+			<form class="individual" action="index.html" method="post" onchange="mostrar()" onfocus="infoEspecialidade()">
+				<div class="individualradio" id="descCategoria">
+					<input class="radios" type="radio" name="gender" value="reclamação" onchange="atualizar()"> RECLAMAÇÃO
+				</div>
+				<div class="individualradio" id="descCategoria">
+					<input class="radios" type="radio" name="gender" value="insistência" onchange="atualizar()"> INSISTÊNCIA
+				</div>
+				<div class="individualradio" id="descCategoria">
+					<input class="radios" type="radio" checked="checked" name="gender" value="novo" onchange="atualizar()"> NOVO PEDIDO
+				</div>
+			</form>
+				<br>
+				<br>
+			<div class="global">
+				<! ----------------------------------------------------------------- instalação-->
+				<form class="individual" action="index.html" method="post" onchange="mostrar()" onfocus="infoInstalação()">
+					<select class="piso" name="Piso" id="text-two" onfocus="infoInstalação()">
+						<option></option>
+					</select>
+					<div class="individual" id="descInstalação">
+						INSTALAÇÃO:
+					</div>
+				</form>
+
+
+				<! ----------------------------------------------------------------- categoria -->
+				<form class="individual" action="index.html" method="post" onchange="mostrar()" onfocus="infoCategoria()">
+					<select class="piso" name="Piso" id="categoria" onchange="mostrar()" onfocus="infoCategoria()">
+						<option value=""></option>
+						<option value="">Manutenção</option>
+						<option value="">Segurança</option>
+					</select>
+					<div class="individual" id="descCategoria">
+						CATEGORIA:
+					</div>
+				</form>
+				<! ------------------------------------------------------- ESPECIALIDADE -->
+				<form class="individual" action="index.html" method="post" onload="mostrar()" id="especialidadeDefault">
+					<select class="piso" name="Piso" id="cat.especialidadeDefault" onchange="mostrar()" onfocus="infoEspecialidade()">
+						<option></option>
+					</select>
+					<div class="individual" id="descEspecialidadeDefault">
+						ESPECIALIDADE:
+					</div>
+				</form>
+				<form class="individual" action="index.html" method="post" onload="mostrar()" id="especialidadeGMT">
+					<select class="piso" name="Piso" id="cat.especialidadeGMT" onchange="mostrar()" onfocus="infoEspecialidade()">
+						<option></option>
+						<option>Construção Civil</option>
+						<option>Eletricidade</option>
+						<option>Ar Condicionado</option>
+						<option>Elevadores</option>
+						<option>Equipamentos de Correio</option>
+						<option>Outros</option>
+						<option>Análise</option>
+						<option>Conservação</option>
+
+					</select>
+					<div class="individual" id="descEspecialidadeGMT">
+						ESPECIALIDADE:
+					</div>
+				</form>
+				<form class="individual" action="index.html" method="post" onload="mostrar()" id="especialidadeSEG">
+					<select class="piso" name="Piso" id="cat.especialidadeSEG" onchange="mostrar()" onfocus="infoEspecialidade()">
+						<option value=""></option>
+						<option>Cofres</option>
+						<option>Intrusão</option>
+						<option>Incêndio</option>
+						<option>Anti Furto</option>
+						<option>Controlo de Acessos</option>
+						<option>CCTV</option>
+						<option>ETV</option>
+						<option>Mala Meta</option>
+						<option>Outros</option>
+						<option>Interação Compras e Logística</option>
+
+					</select>
+					<div class="individual" id="descEspecialidadeSEG">
+						ESPECIALIDADE:
+					</div>
+				</form>
+				<! ------------------------------------------------------------- OBJ CC -->
+				<form class="individual" action="index.html" method="post" id="defeito">
+					<select class="piso" name="Piso" id="esp.defeito" onchange="mostrar()" onfocus="infoObjeto()">
+						<option value=""></option>
+					</select>
+					<div class="individual" id="descObjetoDefeito">
+						OBJETO:
+					</div>
+				</form>
+				<! ------------------------------------------------------------- OBJ CC -->
+				<form class="individual" action="index.html" method="post" id="cc">
+					<select class="piso" name="Piso" id="esp.cc" onchange="mostrar()" onfocus="infoObjeto()">
+						<option value=""></option>
+						<option value="">Algerozes</option>
+						<option value="">Alteração de layout</option>
+						<option value="">Autoclismos</option>
+						<option value="">Bandeirola</option>
+						<option value="">Barreira/Cancela</option>
+						<option value="">Bombas</option>
+						<option value="">Cais de carga/descarga</option>
+						<option value="">Canalizações Água Potável</option>
+						<option value="">Canalizações Águas Residuais</option>
+						<option value="">Chuveiros</option>
+						<option value="">Coberturas/Telheiros</option>
+						<option value="">Contadores</option>
+						<option value="">Corrimões</option>
+						<option value="">Descaraterização Imagem CTT</option>
+						<option value="">Divisórias Amovíveis/Tectos Falsos</option>
+						<option value="">Entupimentos</option>
+						<option value="">Escadas</option>
+						<option value="">Esgotos</option>
+						<option value="">Estores</option>
+						<option value="">Expositores/Cartazes/Placas</option>
+						<option value="">Fugas de água</option>
+						<option value="">Gradeamentos</option>
+						<option value="">Graffiti</option>
+						<option value="">Infiltrações</option>
+						<option value="">Instalação de equipamentos</option>
+						<option value="">Janelas</option>
+						<option value="">Louças Sanitárias</option>
+						<option value="">Muros</option>
+						<option value="">Paredes/Tectos</option>
+						<option value="">Pavimentos</option>
+						<option value="">Película</option>
+						<option value="">Portas/Portões</option>
+						<option value="">Rampa</option>
+						<option value="">Remoção de equipamentos/material</option>
+						<option value="">Reservatórios</option>
+						<option value="">Rodapés</option>
+						<option value="">Sarjetas</option>
+						<option value="">Tapete</option>
+						<option value="">Telhados</option>
+						<option value="">Toldo</option>
+						<option value="">Torneiras</option>
+						<option value="">Vidros/Espelhos</option>
+						<option value="">Outros</option>
+					</select>
+					<div class="individual" id="descObjetoCC">
+						OBJETO:
+					</div>
+				</form>
+				<! ------------------------------------------------------------- OBJ IE -->
+				<form class="individual" action="index.html" display="none" method="post" id="ie">
+					<select class="piso" name="Piso" id="esp.ie" onchange="mostrar()" onfocus="infoObjeto()">
+						<option value=""></option>
+						<option value="">Armaduras</option>
+						<option value="">Arrancadores</option>
+						<option value="">Autómato</option>
+						<option value="">Bandeirola</option>
+						<option value="">Bastidor</option>
+						<option value="">Bloco autónomo</option>
+						<option value="">Cabos de Alimentação</option>
+						<option value="">Cabos/Calhas</option>
+						<option value="">Campainha/Videoporteiro</option>
+						<option value="">Candeeiros</option>
+						<option value="">Carregadores elétricos</option>
+						<option value="">Curto circuito</option>
+						<option value="">Falha de energia</option>
+						<option value="">Grupo Geradores</option>
+						<option value="">Iluminação</option>
+						<option value="">Interruptores Horários</option>
+						<option value="">Interruptores Iluminação</option>
+						<option value="">Lâmpadas</option>
+						<option value="">Painéis Solares</option>
+						<option value="">Pontos de Luz</option>
+						<option value="">Posto Transformação</option>
+						<option value="">Projectores</option>
+						<option value="">Quadros Eléctricos</option>
+						<option value="">Rede Estruturada</option>
+						<option value="">Sinalética/Rótulos Luminosos</option>
+						<option value="">Técnico Responsável Exploração (TRE)</option>
+						<option value="">Tomadas Eléctricas</option>
+						<option value="">UPS</option>
+						<option value="">Ventilador</option>
+						<option value="">Outros</option>
+					</select>
+					<div class="individual" id="descObjetoIE">
+						OBJETO:
+					</div>
+				</form>
+				<! ------------------------------------------------------------- OBJ AC -->
+				<form class="individual" action="index.html" display="none" method="post" id="ac">
+					<select class="piso" name="Piso" id="esp.ac" onchange="mostrar()" onfocus="infoObjeto()">
+						<option value=""></option>
+						<option value="">Aparelho Ar Condicionado</option>
+						<option value="">Chiller</option>
+						<option value="">Comando por Infravermelhos ou por Cabo</option>
+						<option value="">Filtros</option>
+						<option value="">Infiltrações provenientes do Ar Condicionado</option>
+						<option value="">Interruptores Horários</option>
+						<option value="">Qualidade do ar interior</option>
+						<option value="">Ventilador</option>
+						<option value="">Outros</option>
+					</select>
+					<div class="individual" id="descObjetoAC">
+						OBJETO:
+					</div>
+				</form>
+				<! ------------------------------------------------------------- OBJ PE -->
+				<form class="individual" action="index.html" display="none" method="post" id="pe">
+					<select class="piso" name="Piso" id="esp.pe" onchange="mostrar()" onfocus="infoObjeto()">
+						<option value=""></option>
+						<option value="">Cadeira/Plataforma para mobilidade reduzida</option>
+						<option value="">Elevadores</option>
+						<option value="">Monta Cargas</option>
+						<option value="">Plataformas</option>
+						<option value="">Outros</option>
+					</select>
+					<div class="individual" id="descObjetoPE">
+						OBJETO:
+					</div>
+				</form>
+				<! ------------------------------------------------------------- OBJ OT -->
+				<form class="individual" action="index.html" display="none" method="post" id="ec">
+					<select class="piso" name="Piso" id="esp.ec" onchange="mostrar()" onfocus="infoObjeto()">
+						<option value=""></option>
+						<option value="">Apartados</option>
+						<option value="">Bateria Caixas de Correio Individuais (BCCI)</option>
+						<option value="">Bateria Recetáculo Individual de Correio (BRIC)</option>
+						<option value="">Caixas de Correio</option>
+						<option value="">Marcos de Correio</option>
+						<option value="">Marco de reabastecimento</option>
+						<option value="">Marcos Especiais</option>
+						<option value="">Receptáculos Postais</option>
+						<option value="">Outros</option>
+					</select>
+					<div class="individual" id="descObjetoEC">
+						OBJETO:
+					</div>
+				</form>
+				<! ------------------------------------------------------------- OBJ OT -->
+				<form class="individual" action="index.html" display="none" method="post" id="ot">
+					<select class="piso" name="Piso" id="esp.ot" onchange="mostrar()" onfocus="infoObjeto()">
+						<option value=""></option>
+						<option value="">Acessos (Edifício CTT)</option>
+						<option value="">Aquecimento Solar</option>
+						<option value="">Ar Comprimido</option>
+						<option value="">Consumíveis (Edifício CTT)</option>
+						<option value="">Electrobombas</option>
+						<option value="">Electrodomésticos (Edifício CTT)</option>
+						<option value="">Equipamentos específicos (Edifício CTT)</option>
+						<option value="">Estafetagem interna/externa (Edifício CTT)</option>
+						<option value="">Jardinagem</option>
+						<option value="">Libertação de garantias bancárias</option>
+						<option value="">Limpezas (Edifício CTT)</option>
+						<option value="">Marcação de auditório (Edifício CTT)</option>
+						<option value="">Mobiliário (Loja/CDP)</option>
+						<option value="">Mobiliário (Serviços Centrais)</option>
+						<option value="">Mudança de posto de trabalho (Edifício CTT)</option>
+						<option value="">Reposição</option>
+						<option value="">Termoacumuladores</option>
+						<option value="">Outros</option>
+					</select>
+					<div class="individual" id="descObjetoOT">
+						OBJETO:
+					</div>
+				</form>
+
+				<! ------------------------------------------------------------ OBJ SEG -->
+				<form class="individual" action="index.html" display="none" method="post" id="cofres">
+					<select class="piso" name="Piso" id="esp.cofres" onchange="mostrar()" onfocus="infoObjeto()">
+						<option value=""></option>
+						<option value="">Cofres</option>
+						<option value="">Chaves de Segurança (dos cofres)</option>
+						<option value="">Cofre de Balcão</option>
+						<option value="">Gavetas de Coadjuvante</option>
+						<option value="">Gavetas Cofre</option>
+						<option value="">Portas de Segurança</option>
+						<option value="">Segredos Eletronicos cofres apoio balcão CTT</option>
+						<option value="">Segredos Eletrónicos cofres banco e casa forte</option>
+						<option value="">Fechaduras dos cofres</option>
+						<option value="">Outros</option>
+					</select>
+					<div class="individual" id="descObjetoCofres">
+						OBJETO:
+					</div>
+				</form>
+				<! ------------------------------------------------------------ OBJ SEG -->
+				<form class="individual" action="index.html" display="none" method="post" id="intrusão">
+					<select class="piso" name="Piso" id="esp.intrusão" onchange="mostrar()" onfocus="infoObjeto()">
+						<option value=""></option>
+						<option value="">Outros</option>
+						<option value="">Botão de pânico</option>
+						<option value="">Central de Deteção de Intrusão (Central CDI)</option>
+						<option value="">Contactos Magnéticos</option>
+						<option value="">Detetores de movimento</option>
+						<option value="">Detetores de Quebra de Vidros</option>
+						<option value="">Detetores Sísmicos</option>
+						<option value="">Sirene Exterior</option>
+					</select>
+					<div class="individual" id="descObjetoIntrusão">
+						OBJETO:
+					</div>
+				</form>
+				<! ------------------------------------------------------------ OBJ SEG -->
+				<form class="individual" action="index.html" display="none" method="post" id="incêndio">
+					<select class="piso" name="Piso" id="esp.incêndio" onchange="mostrar()" onfocus="infoObjeto()">
+						<option value=""></option>
+						<option value="">Bocas de incêndio (interior)</option>
+						<option value="">Botoneira de alarme de incêndio</option>
+						<option value="">Carretéis</option>
+						<option value="">Central Automática Detecção de Incêncio (SADI)</option>
+						<option value="">Central de Bombagem</option>
+						<option value="">Detetores de Fumos por Laser (BEAMS)</option>
+						<option value="">Detetores de incêndio</option>
+						<option value="">Extintores (Água, CO2, FM 200)</option>
+						<option value="">Hidrantes (boca de incêndio exterior)</option>
+						<option value="">Sinalizadores de ação</option>
+						<option value="">Rede Sprinklers</option>
+						<option value="">Sirene Exterior</option>
+						<option value="">Sirene Interior</option>
+						<option value="">Sistema fixo de extinção por gás (CO2, FM200, etc.)</option>
+						<option value="">Outros</option>
+					</select>
+					<div class="individual" id="descObjetoIncêndio">
+						OBJETO:
+					</div>
+				</form>
+				<! ------------------------------------------------------------ OBJ SEG -->
+				<form class="individual" action="index.html" display="none" method="post" id="furto">
+					<select class="piso" name="Piso" id="esp.furto" onchange="mostrar()" onfocus="infoObjeto()">
+						<option value=""></option>
+						<option value="">Antenas</option>
+						<option value="">Etiquetas</option>
+						<option value="">Mesa Desmagnetizadora</option>
+						<option value="">Raquete</option>
+						<option value="">Outros</option>
+					</select>
+					<div class="individual" id="descObjetoFurto">
+						OBJETO:
+					</div>
+				</form>
+				<! ------------------------------------------------------------ OBJ SEG -->
+				<form class="individual" action="index.html" display="none" method="post" id="acessos">
+					<select class="piso" name="Piso" id="esp.acessos" onchange="mostrar()" onfocus="infoObjeto()">
+						<option value=""></option>
+						<option value="">Botão de pressão p/ abertura manual</option>
+						<option value="">Botoneira de abertura de emergência</option>
+						<option value="">Contato magnético</option>
+						<option value="">Eletroíman</option>
+						<option value="">Fonte de alimentação</option>
+						<option value="">Leitor Cartões/Teclado</option>
+						<option value="">Mola de porta</option>
+						<option value="">Outros</option>
+					</select>
+					<div class="individual" id="descObjetoAcessos">
+						OBJETO:
+					</div>
+				</form>
+				<! ------------------------------------------------------------ OBJ SEG -->
+				<form class="individual" action="index.html" display="none" method="post" id="cctv">
+					<select class="piso" name="Piso" id="esp.cctv" onchange="mostrar()" onfocus="infoObjeto()">
+						<option value=""></option>
+						<option value="">Câmaras</option>
+						<option value="">Monitor</option>
+						<option value="">Video Gravador</option>
+						<option value="">Outros</option>
+					</select>
+					<div class="individual" id="descObjetoCCTV">
+						OBJETO:
+					</div>
+				</form>
+				<! ------------------------------------------------------------ OBJ SEG -->
+				<form class="individual" action="index.html" display="none" method="post" id="etv">
+					<select class="piso" name="Piso" id="esp.etv" onchange="mostrar()" onfocus="infoObjeto()">
+						<option value=""></option>
+						<option value="">Alteração/Anulação</option>
+						<option value="">Comunicação de atraso</option>
+						<option value="">Pedido</option>
+					</select>
+					<div class="individual" id="descObjetoETV">
+						OBJETO:
+					</div>
+				</form>
+				<! ------------------------------------------------------------ OBJ SEG -->
+				<form class="individual" action="index.html" display="none" method="post" id="mala">
+					<select class="piso" name="Piso" id="esp.mala" onchange="mostrar()" onfocus="infoObjeto()">
+						<option value=""></option>
+						<option value="">Carregador Mala Meta</option>
+						<option value="">Chave Eletrónica Mala Meta</option>
+						<option value="">Pedido</option>
+						<option value="">Mala Meta (mala de transporte de valores)</option>
+						<option value="">Saquetas Transporte Valores Mala Meta</option>
+						<option value="">Outros</option>
+					</select>
+					<div class="individual" id="descObjetoMala">
+						OBJETO:
+					</div>
+				</form>
+				<! ------------------------------------------------------------ OBJ SEG -->
+				<form class="individual" action="index.html" display="none" method="post" id="outrosseg">
+					<select class="piso" name="Piso" id="esp.outrosSEG" onchange="mostrar()" onfocus="infoObjeto()">
+						<option value=""></option>
+						<option value="">ANPC (Proteção Civil)</option>
+						<option value="">ANAC (Aviação Civil)</option>
+						<option value="">CNPD (Comissão Nacional de Proteção de Dados)</option>
+						<option value="">Cartões para entidade externa (Edifício CTT)</option>
+						<option value="">Comunicação de manifestações/greves</option>
+						<option value="">Notificação PSP/GNR/PJ</option>
+						<option value="">Estacionamento</option>
+						<option value="">Ocorrências de segurança</option>
+						<option value="">Parecer PSP/GNR - Instalação ATM</option>
+						<option value="">Pedido autocolantes</option>
+						<option value="">Pedido de apreensão pacotes suspeitos</option>
+						<option value="">Pedido de planta de emergência</option>
+						<option value="">Pedido de segurança privada</option>
+						<option value="">Pedido de sinalização de segurança</option>
+						<option value="">Pedido Gravação Imagens</option>
+						<option value="">Plano Medidas Autoproteção/Segurança</option>
+						<option value="">Policiamento - Pedidos, Falhas</option>
+						<option value="">Relatórios Auditoria</option>
+						<option value="">Retenção/Devolução envios postais - EPA</option>
+						<option value="">Relatório SST</option>
+						<option value="">RX/DVE/Pórtico do EPA (máquinas existentes)</option>
+						<option value="">Remoção de Equipamentos</option>
+						<option value="">Segurança Postal</option>
+						<option value="">Segurança Eletrónica</option>
+					</select>
+					<div class="individual" id="descObjetoOutrosSEG">
+						OBJETO:
+					</div>
+				</form>
+				<! ------------------------------------------------------------ OBJ SEG -->
+				<form class="individual" action="index.html" display="none" method="post" id="compras">
+					<select class="piso" name="Piso" id="esp.compras" onchange="mostrar()" onfocus="infoObjeto()">
+						<option value=""></option>
+						<option value="">Procedimento de consulta ao mercado</option>
+					</select>
+					<div class="individual" id="descObjetoCompras">
+						OBJETO:
+					</div>
+				</form>
+
+				<! ----------------------------------------------------------- urgência -->
+				<form class="individual" action="index.html" method="post">
+					<select class="piso" name="Piso" id="urgência" onchange="mostrar()" onfocus="infoUrgência()">
+						<option value=""></option>
+						<option value="">Normal</option>
+						<option value="">Urgente</option>
+						<option value="">Emergente</option>
+					</select>
+					<div class="individual" id="descUrgência">
+						URGÊNCIA:
+					</div>
+				</form>
+				<! ------------------------------------------------------- descrição -->
+				<form class="individual2" action="index.html" method="post">
+					<textarea class="desc" name="name" rows="8" cols="93" id="descrição" oninput="mostrar()" onfocus="infoDescrição()"></textarea>
+					<div class="individual" id="descDescrição">
+						DESCRIÇÃO:
+					</div>
+				</form>
+				<form class="individual2" action="index.html" method="post">
+					<br>
+				</form>
+			</div>
+			<br><br><br><br>
+			<div class="individual3" align="center">
+				<br>
+				<div class="submeter" align="center" onclick="submeter()" id="submeterPedido" onfocus="infoSubmeter()">
+					SUBMETER PEDIDO
+				</div>
+				<br>
+				<a href="https://ravenwood1975.github.io/Formul%C3%A1rio%20Edif%C3%ADcio%20CTT/index.html">Pedidos para Edifício CTT</a>
+				<div class="foot" align="right">
+					FORMULÁRIO SOLICITAÇÕES RECURSOS FÍSICOS v1.0
+				</div>
+				<br><br>
+
+			</div>
+
+		</div>
+	</body>
+	</html>
