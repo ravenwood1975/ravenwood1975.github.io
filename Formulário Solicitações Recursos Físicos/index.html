@@ -932,7 +932,7 @@
 			document.getElementById("instruções2").textContent = "desbloquear a opção SUBMETER PEDIDO.";
 		}
 		if (instalação !="" && categoria !="" && especialidade !="" && objeto !="" && urgência !="" && descrição !=""){
-			var assunto = "mailto:"+"imotalismaservice"+"@"+"ctt.pt?subject="+encodeURIComponent(categoria)+" "+encodeURIComponent(especialidade)+"/"+encodeURIComponent(objeto)+" - "+encodeURIComponent(urgência)+" - ["+encodeURIComponent(instalação)+"] - "+encodeURIComponent(tipo);
+			var assunto = "mailto:"+"imotalismaservice"+"@"+"ctt.pt?subject="+encodeURIComponent(instalação)+" - "+encodeURIComponent(especialidade)+"/"+encodeURIComponent(objeto)+" - "+encodeURIComponent(tipo)+" "+encodeURIComponent(urgência);
 			var corpo = "&body=SOLICITAÇÕES RECURSOS FÍSICOS%0D%0A%0D%0AINSTALAÇÃO: "+encodeURIComponent(instalação)+"%0D%0ACATEGORIA: "+encodeURIComponent(categoria)+"%0D%0AESPECIALIDADE: "+encodeURIComponent(especialidade)+"%0D%0AOBJETO: "+encodeURIComponent(objeto)+"%0D%0AURGÊNCIA: "+encodeURIComponent(urgência)+"%0D%0A%0D%0ADESCRIÇÃO:%0D%0A"+encodeURIComponent(descrição)+"%0D%0A%0D%0A%0D%0A%0D%0A____________________________________________%0D%0APODE ADICIONAR ANEXOS ANTES DE ENVIAR O EMAIL";
 			var email = assunto+corpo;
 			window.location.href = email;
@@ -3256,7 +3256,6 @@ a:hover, a:active {
 						<option value="">Equipamentos específicos (Edifício CTT)</option>
 						<option value="">Estafetagem interna/externa (Edifício CTT)</option>
 						<option value="">Jardinagem</option>
-						<option value="">Libertação de garantias bancárias</option>
 						<option value="">Limpezas (Edifício CTT)</option>
 						<option value="">Marcação de auditório (Edifício CTT)</option>
 						<option value="">Mobiliário (Loja/CDP)</option>
