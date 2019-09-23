@@ -1,0 +1,696 @@
+
+<!DOCTYPE html>
+<html lang="pt" dir="ltr">
+<head>
+	<title>SOLICITAÇÕES RECURSOS FÍSICOS - Pedido de Intervenção</title>
+	<meta charset="utf-8">
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+	<link rel='stylesheet' href='css/style.css'>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
+	<script>
+	// função para obter instalação de ficheiro externo
+	//$(function() {
+	//$("#text-one").load("instalações.txt");
+	//});
+	function mostrar() {
+		var empresa = ""
+		var nif = ""
+		var morada = ""
+		var cp4 = ""
+		var cp3 = ""
+		var localidade = ""
+		var email = ""
+		var telefone = ""
+		var fax = ""
+		var nome = ""
+		var cc = ""
+		var ie = ""
+		var ac = ""
+		var pe = ""
+		var módulos = ""
+
+		var empresa = document.getElementById("empresa").value;
+		document.getElementById("empresa").value = empresa.toUpperCase();
+		var nif = document.getElementById("nif").value;
+		var morada = document.getElementById("morada").value;
+		document.getElementById("morada").value = morada.toUpperCase();
+		var cp4 = document.getElementById("cp4").value;
+		var cp3 = document.getElementById("cp3").value;
+		var localidade = document.getElementById("localidade").value;
+		document.getElementById("localidade").value = localidade.toUpperCase();
+		var email = document.getElementById("email").value;
+		var telefone = document.getElementById("telefone").value;
+		var fax = document.getElementById("fax").value;
+		var nome = document.getElementById("nome").value;
+		document.getElementById("nome").value = nome.toUpperCase();
+
+		var x = document.getElementById("esp.cc").checked;
+		if (x==true) {
+			var cc = "Sim"
+		}
+		if (x==false) {
+			var cc = ""
+		}
+		var x = document.getElementById("esp.ie").checked;
+		if (x==true) {
+			var ie = "Sim"
+		}
+		if (x==false) {
+			var ie = ""
+		}
+		var x = document.getElementById("esp.ac").checked;
+		if (x==true) {
+			var ac = "Sim"
+		}
+		if (x==false) {
+			var ac = ""
+		}
+		var x = document.getElementById("esp.pe").checked;
+		if (x==true) {
+			var pe = "Sim"
+		}
+		if (x==false) {
+			var pe = ""
+		}
+
+		var x = document.getElementById("zona.norte").checked;
+		if (x==true) {
+			módulos = módulos+"1,2,"
+		}
+		var x = document.getElementById("zona.centro").checked;
+		if (x==true) {
+			módulos = módulos+"3,4,"
+		}
+		var x = document.getElementById("zona.lisboa").checked;
+		if (x==true) {
+			módulos = módulos+"5,6,9,"
+		}
+		var x = document.getElementById("zona.sul").checked;
+		if (x==true) {
+			módulos = módulos+"7,8,"
+		}
+		var x = document.getElementById("zona.açores").checked;
+		if (x==true) {
+			módulos = módulos+"A,"
+		}
+		var x = document.getElementById("zona.madeira").checked;
+		if (x==true) {
+			módulos = módulos+"DRM,"
+		}
+
+		tamMódulos = módulos.length
+		if (tamMódulos>0) {
+			módulos = módulos.substring(0,(tamMódulos-1))
+		}
+
+		//avisos para permissão internet explorer
+		permissão.style.display = "none";
+		permissãoie.style.display = "none";
+
+		//alert(módulos)
+
+		if (empresa !="" && nif !="" && morada !="" && cp4 !="" && cp3 !="" && localidade !="" && email !="" && telefone !="" && fax !=""){
+			document.getElementById("submeterPedido").style.backgroundColor = "rgb(222,0,0)";
+		}
+		else {
+			document.getElementById("submeterPedido").style.backgroundColor = "#bbb";
+		}
+	}
+	function submeter() {
+		var empresa = ""
+		var nif = ""
+		var morada = ""
+		var cp4 = ""
+		var cp3 = ""
+		var localidade = ""
+		var email = ""
+		var telefone = ""
+		var fax = ""
+		var nome = ""
+		var cc = ""
+		var ie = ""
+		var ac = ""
+		var pe = ""
+		var módulos = ""
+
+
+		var empresa = document.getElementById("empresa").value;
+		document.getElementById("empresa").value = empresa.toUpperCase();
+		var nif = document.getElementById("nif").value;
+		var morada = document.getElementById("morada").value;
+		document.getElementById("morada").value = morada.toUpperCase();
+		var cp4 = document.getElementById("cp4").value;
+		var cp3 = document.getElementById("cp3").value;
+		var localidade = document.getElementById("localidade").value;
+		document.getElementById("localidade").value = localidade.toUpperCase();
+		var email = document.getElementById("email").value;
+		var telefone = document.getElementById("telefone").value;
+		var fax = document.getElementById("fax").value;
+		var nome = document.getElementById("nome").value;
+		document.getElementById("nome").value = nome.toUpperCase();
+
+		var x = document.getElementById("esp.cc").checked;
+		if (x==true) {
+			var cc = "Sim"
+		}
+		if (x==false) {
+			var cc = "Não"
+		}
+		var x = document.getElementById("esp.ie").checked;
+		if (x==true) {
+			var ie = "Sim"
+		}
+		if (x==false) {
+			var ie = ""
+		}
+		var x = document.getElementById("esp.ac").checked;
+		if (x==true) {
+			var ac = "Sim"
+		}
+		if (x==false) {
+			var ac = ""
+		}
+		var x = document.getElementById("esp.pe").checked;
+		if (x==true) {
+			var pe = "Sim"
+		}
+		if (x==false) {
+			var pe = ""
+		}
+
+		var x = document.getElementById("zona.norte").checked;
+		if (x==true) {
+			var norte = "Sim"
+		}
+		if (x==false) {
+			var norte = ""
+		}
+
+		var x = document.getElementById("zona.norte").checked;
+		if (x==true) {
+			módulos = módulos+"1,2,"
+		}
+		var x = document.getElementById("zona.centro").checked;
+		if (x==true) {
+			módulos = módulos+"3,4,"
+		}
+		var x = document.getElementById("zona.lisboa").checked;
+		if (x==true) {
+			módulos = módulos+"5,6,9,"
+		}
+		var x = document.getElementById("zona.sul").checked;
+		if (x==true) {
+			módulos = módulos+"7,8,"
+		}
+		var x = document.getElementById("zona.açores").checked;
+		if (x==true) {
+			módulos = módulos+"A,"
+		}
+		var x = document.getElementById("zona.madeira").checked;
+		if (x==true) {
+			módulos = módulos+"DRM,"
+		}
+
+		tamMódulos = módulos.length
+		if (tamMódulos>0) {
+			módulos = módulos.substring(0,(tamMódulos-1))
+		}
+
+		//avisos para permissão internet explorer
+		permissão.style.display = "none";
+		permissãoie.style.display = "none";
+
+		//alert(norte)
+
+		if (empresa !="" && nif !="" && morada !="" && cp4 !="" && cp3 !="" && localidade !="" && email !="" && telefone !="" && fax !=""){
+			document.getElementById("submeterPedido").style.backgroundColor = "rgb(222,0,0)";
+		}
+		else {
+			document.getElementById("submeterPedido").style.backgroundColor = "#bbb";
+		}
+
+		if (empresa !="" && nif !="" && morada !="" && cp4 !="" && cp3 !="" && localidade !="" && email !="" && telefone !="" && fax !=""){
+			var assunto = "mailto:"+"imotalismaservice"+"@"+"ctt.pt?subject=■ CRIAR FORNECEDOR: "+encodeURIComponent(empresa)+" ("+encodeURIComponent(nif)+")";
+			var corpo1 = "&body=■ CRIAR FORNECEDOR%0D%0A%0D%0AEMPRESA: "+encodeURIComponent(empresa)+"%0D%0ANIF: "+encodeURIComponent(nif)+"%0D%0AMORADA: "+encodeURIComponent(morada)+"%0D%0ACP: "+encodeURIComponent(cp4)+"-"+encodeURIComponent(cp3)+" "+encodeURIComponent(localidade)+"%0D%0AEMAIL: "+encodeURIComponent(email)+"%0D%0ATELEFONE: "+encodeURIComponent(telefone)+"%0D%0AFAX: "+encodeURIComponent(fax)+"%0D%0ANOME: "+encodeURIComponent(nome);
+			var corpo2 = "%0D%0A%0D%0AESPECIALIDADES%0D%0A   CC: "+encodeURIComponent(cc)+"%0D%0A   IE: "+encodeURIComponent(ie)+"%0D%0A   AC: "+encodeURIComponent(ac)+"%0D%0A   PE: "+encodeURIComponent(pe)+"%0D%0A%0D%0AMódulos: "+encodeURIComponent(módulos)+"%0D%0A%0D%0A%0D%0A%0D%0A____________________________________________%0D%0APODE ADICIONAR ANEXOS ANTES DE ENVIAR O EMAIL";
+			var email = assunto+corpo1+corpo2;
+			window.location.href = email;
+		}
+		else {
+			alert("É necessário preencher todos os campos antes de submeter o pedido!");//tipo+"/"+instalação+"/"+categoria+"/"+especialidade+"/"+objeto+"/"+urgência+"/"+descrição) //"É necessário preencher todos os campos antes de submeter o pedido!");
+		}
+	}
+	</script>
+</head>
+
+<style>
+.notification-message-unread {
+	width: 1004px;
+	font-family: arial;
+	background-color: rgb(222,0,0);
+	color: white;
+	padding: 10px;
+	font-family: arial;
+	font-weight: bold;
+	font-size: 40px;
+	animation: blinker 1s linear infinite;
+}
+@keyframes blinker {
+	50% {
+		background-color: white;
+	}
+}
+.desc {
+	float: right;
+	font-family: arial;
+	width: 787px;
+}
+img.planta {
+	float: right;
+	width: 560px;
+}
+img.ie{
+	display: block;
+	padding-left: 51px;
+	padding-right: 51px;
+	padding-bottom: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: rgb(222,0,0);
+	animation: blinker 1s linear infinite;
+}
+.desc2 {
+	width: 1004px;
+	font-family: arial;
+	background-color: rgb(222,0,0);
+	color: white;
+	padding: 10px;
+	margin-top: 10px;
+	font-family: arial;
+}
+.especialidades {
+	width: 1004px;
+	font-family: arial;
+	background-color: rgb(220,220,220);
+	color: black;
+	padding: 05px;
+	margin-top: 10px;
+	font-family: arial;
+}
+.desc3 {
+	width: 1004px;
+	font-family: arial;
+	background-color: rgb(222,0,0);
+	color: white;
+	padding: 10px;
+	font-family: arial;
+	font-weight: bold;
+	font-size: 40px;
+}
+input.longo {
+	width: 780px;
+	height: 15px;
+	padding: 10px;
+	float: right;
+	-text-transform: capitalize;
+}
+input.especialidade {
+	width: 780px;
+	height: 15px;
+	padding: 10px;
+	float: right;
+	-text-transform: capitalize;
+}
+input.médio {
+	width: 255px;
+	height: 15px;
+	padding: 10px;
+	float: right;
+	-text-transform: capitalize;
+}
+input.médio2 {
+	width: 70px;
+	height: 15px;
+	padding: 10px;
+	float: right;
+	-text-transform: capitalize;
+}
+input.cp4 {
+	width: 30px;
+	height: 15px;
+	padding: 10px;
+	float: right;
+	margin-right: 10px;
+	-text-transform: capitalize;
+}
+input.cp3 {
+	width: 25px;
+	height: 15px;
+	padding: 10px;
+	float: right;
+	margin-right: 40px;
+	-text-transform: capitalize;
+}
+input.localidade {
+	width: 610px;
+	height: 15px;
+	padding: 10px;
+	float: right;
+	-text-transform: capitalize;
+}
+input.curto2 {
+	width: 45px;
+	height: 40px;
+	padding: 10px;
+	margin-right: 10px;
+	float: right
+}
+div.pagina {
+	max-width: 1024px;
+	margin: auto;
+}
+div.global {
+	width: 1024px;
+}
+form.individual {
+	width: 1024px;
+	padding-top: 10px;
+}
+form.radioBase {
+	width: 1024px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border: .1em solid rgba(0, 0, 0, .75);
+}
+form.individual2 {
+	width: 1024px;
+	padding-top: 10px;
+}
+form.longo {
+	width: 1024px;
+	padding-top: 10px;
+}
+form.médio {
+	width: 500px;
+	padding-top: 10px;
+}
+form.especialidade {
+	width: 460px;
+	padding-top: 10px;
+}
+form.médio2 {
+	width: 315px;
+	padding-top: 10px;
+}
+form.curto {
+	width: 410px;
+	padding-top: 10px;
+	float: right
+}
+div.matrícula {
+	-width: 200px;
+	-background-color: rgb(222,0,0);
+	-color: white;
+	padding-top: 5px;
+	margin-right: 10px;
+	margin-left: 0px;
+	font-family: arial;
+	font-weight: bold;
+	font-size: 20px;
+	float: right
+}
+div.individual3 {
+	width: 1024px;
+}
+div.individual {
+	width: 200px;
+	background-color: rgb(222,0,0);
+	color: white;
+	padding-left: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	font-family: arial;
+	font-weight: bold;
+}
+
+div.individualfloat {
+	width: 200px;
+	background-color: rgb(222,0,0);
+	color: white;
+	padding-left: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-right: 10px;
+	font-family: arial;
+	font-weight: bold;
+	float: right;
+	margin-right: 10px;
+}
+div.checkboxfloat {
+	width: 210px;
+	-background-color: rgb(222,0,0);
+	-color: white;
+	padding-left: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	font-family: arial;
+	-font-weight: bold;
+	float: right;
+	margin-right: 10px;
+}
+
+div.longo {
+	width: 1024px;
+	background-color: rgb(222,0,0);
+	color: white;
+	padding-left: 10px;
+	-padding-top: 10px;
+	padding-bottom: 5px;
+	font-family: arial;
+	font-weight: bold;
+}
+div.individualradio {
+	width: 310px;
+	background-color: rgb(222,0,0);
+	color: white;
+	padding: 5px;
+	-padding-right: 80px;
+	-padding-bottom: 10px;
+	font-family: arial;
+	font-weight: bold;
+	float: right;
+	margin-right: 10px;
+	margin-left: 10px;
+	-margin-bottom: 10px;
+	text-align: center;
+}
+div.foot {
+	padding: 10px;
+	font-family: arial;
+	font-size: 8px;
+}
+input.radios {
+	-background: none repeat scroll 0 0 #94E325;
+	-border-radius: 50px;
+	-box-shadow: 0 0 10px rgba(0, 0, 0, 0.3) inset;
+	-content: " ";
+	-font-size: 336px;
+	-height: 8px;
+	-left: 7px;
+	-position: absolute;
+	-top: 7px;
+	-width: 80px;
+}
+div.erro {
+	width: 200px;
+	background-color: #bbb;
+	color: white;
+	padding: 10px;
+	font-family: arial;
+	font-weight: bold;
+}
+div.submeter {
+	width: 200px;
+	background-color: rgb(222,0,0);
+	color: white;
+	padding: 10px;
+	font-family: arial;
+	font-weight: bold;
+	cursor: pointer;
+}
+.resultados {
+	width: 1000px;
+	height: 100px;
+	background-color: blue;
+	color: white;
+	padding: 10px;
+	font-family: arial;
+	font-weight: bold;
+}
+select {
+	width: 794px;
+	padding: 10px;
+	float: right
+}
+a:link, a:visited {
+	width: 170px;
+	background-color: rgb(200, 200, 200);
+	color: black;
+	padding: 10px 25px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-family: arial;
+	-font-weight: bold;
+	font-size: 10px;
+}
+a:hover, a:active {
+	background-color: rgb(222,0,0);
+	color: white;
+}
+</style>
+
+<body>
+	<body onload="mostrar()" onfocus="infoSubmeter()">
+		<div class="pagina">
+			<br>
+			<img src="SRFbanner.jpg" alt="">
+			<div class="notification-message-unread" id="permissão" align="center" >
+				ESTE FORMULÁRIO NECESSITA DE PERMISSÃO PARA EXECUTAR SCRIPTS!
+			</div>
+			<img src="ie.jpg" alt="" class="ie" id="permissãoie">
+
+			<div class="global">
+
+				<!---------------------------------------------------------------nome-->
+				<form class="longo" action="index.html" method="post">
+					<input class="longo" type="text" name="" value="" id="empresa" oninput="mostrar()">
+					<div class="individual" id="descEmpresa">
+						EMPRESA:
+					</div>
+				</form>
+				<!---------------------------------------------------------------nome-->
+				<form class="médio2" action="index.html" method="post">
+					<input class="médio2" type="text" maxlength="9" name="" value="" id="nif" oninput="mostrar()">
+					<div class="individual" id="descNIF">
+						NIF:
+					</div>
+				</form>
+
+				<form class="longo" action="index.html" method="post">
+					<input class="longo" type="text" name="" value="" id="morada" oninput="mostrar()">
+					<div class="individual" id="descMORADA">
+						MORADA:
+					</div>
+				</form>
+
+				<!---------------------------------------------------------------matrícula-->
+				<form class="longo" action="index.html" method="post">
+					<input class="localidade" type="text" name="" value="" id="localidade" oninput="mostrar()">
+					<input class="cp3" type="text" maxlength="3" name="" value="" id="cp3" oninput="mostrar()">
+					<div class="matrícula" id="descZona">
+						-
+					</div>
+					<input class="cp4" type="text" maxlength="4" name="" value="" id="cp4" oninput="mostrar()">
+					<div class="individual" id="descCP">
+						CÓDIGO POSTAL:
+					</div>
+				</form>
+
+				<form class="longo" action="index.html" method="post">
+					<input class="longo" type="text" name="" value="" id="email" oninput="mostrar()">
+					<div class="individual" id="descEMAIL">
+						E-MAIL:
+					</div>
+				</form>
+
+				<form class="médio2" action="index.html" method="post">
+					<input class="médio2" maxlength="9" type="text" name="" value="" id="telefone" oninput="mostrar()">
+					<div class="individual" id="descTELEFONE">
+						TELEFONE:
+					</div>
+				</form>
+
+				<form class="médio2" action="index.html" method="post">
+					<input class="médio2" maxlength="9" type="text" name="" value="" id="fax" oninput="mostrar()">
+					<div class="individual" id="descFAX">
+						FAX:
+					</div>
+				</form>
+
+				<form class="longo" action="index.html" method="post">
+					<input class="longo" type="text" name="" value="" id="nome" oninput="mostrar()">
+					<div class="individual" id="descNOME">
+						RESPONSÁVEL:
+					</div>
+				</form>
+				<br>
+
+				<form class="especialidade" action="index.html" method="post">
+					<div align="center" class="individualfloat" id="especialidades">
+						<span id="especialidades">
+							ÁREA DE INTERVENÇÃO
+						</span>
+					</div>
+					<div align="center" class="individualfloat" id="especialidades">
+						<span id="especialidades">
+							ESPECIALIDADES
+						</span>
+					</div>
+
+
+					<br><br>
+					<div class="checkboxfloat" id="especialidades">
+						<input class="" type="checkbox" name="vehicle1" value="sim" id="zona.norte" onclick="mostrar()">Norte (Módulos 1 e 2)<br>
+						<input class="" type="checkbox" name="vehicle1" value="sim" id="zona.centro" onclick="mostrar()">Centro (Módulos 3 e 4)<br>
+						<input class="" type="checkbox" name="vehicle1" value="sim" id="zona.lisboa" onclick="mostrar()">Lisboa (Módulos 5,6 e 9)<br>
+						<input class="" type="checkbox" name="vehicle1" value="sim" id="zona.sul" onclick="mostrar()">Sul (Módulos 7 e 8)<br>
+						<input class="" type="checkbox" name="vehicle1" value="sim" id="zona.açores" onclick="mostrar()">Açores (Módulo A)<br>
+						<input class="" type="checkbox" name="vehicle1" value="sim" id="zona.madeira" onclick="mostrar()">Madeira (Módulo DRM)<br>
+					</div>
+						<div class="checkboxfloat" id="especialidades">
+							<input class="" type="checkbox" name="vehicle1" value="sim" id="esp.cc" onclick="mostrar()">Construção Civil<br>
+							<input class="" type="checkbox" name="vehicle1" value="sim" id="esp.ie" onclick="mostrar()">Instalações Elétricas<br>
+							<input class="" type="checkbox" name="vehicle1" value="sim" id="esp.ac" onclick="mostrar()">Ar Condicionado<br>
+							<input class="" type="checkbox" name="vehicle1" value="sim" id="esp.pe" onclick="mostrar()">Elevadores<br>
+						</div>
+
+
+					</form>
+
+					<br>
+					<br>
+					<br>
+					<br>
+					<br><br><br>
+				<br>
+				<div align="center" class="longo" >
+				</div>
+
+			</div>
+			<br>
+			<div class="individual3" align="center">
+				<br>
+				<div class="submeter" align="center" onclick="submeter()" id="submeterPedido" onfocus="infoSubmeter()">
+					SUBMETER PEDIDO
+				</div>
+				<br>
+
+				<br>
+
+				<a href="https://ravenwood1975.github.io/Formulário%20Solicitações%20Recursos%20Físicos/index.html">PEDIDOS DE INTERVENÇÃO</a>
+				<a href="https://ravenwood1975.github.io/Formul%C3%A1rio%20Edif%C3%ADcio%20CTT/index.html">PEDIDOS PARA EDIFÍCIO CTT</a>
+
+				<div class="foot" align="right">
+					FORMULÁRIO CRIAÇÃO DE FORNECEDOR v1.0
+				</div>
+				<br><br>
+
+			</div>
+
+		</div>
+	</body>
+	</html>
