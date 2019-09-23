@@ -123,20 +123,21 @@ select {
   padding: 10px;
   float: right
 }
-  a:link, a:visited {
+a:link, a:visited {
 	width: 170px;
-  background-color: rgb(222,0,0);
-  color: white;
-  padding: 15px 25px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
+	background-color: rgb(200, 200, 200);
+	color: black;
+	padding: 10px 25px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
 	font-family: arial;
-	font-weight: bold;
+	-font-weight: bold;
 	font-size: 10px;
 }
 a:hover, a:active {
-  background-color: red;
+	background-color: rgb(222,0,0);
+	color: white;
 }
 </style>
 
@@ -391,7 +392,7 @@ function submeter() {
   var urgência = e.options[e.selectedIndex].text;
   var descrição = document.getElementById("descrição").value;
   if (piso !="" && zona !="" && especialidade !="" && objeto !="" && urgência !="" && descrição !=""){
-    var email = "mailto:"+"imotalismaservice"+"@"+"ctt.pt?subject=EDIFICIO CTT [Piso "+piso+"."+zona+"] - "+encodeURIComponent(especialidade)+"/"+encodeURIComponent(objeto)+" ("+encodeURIComponent(urgência)+")&body=FORMULÁRIO EDIFÍCIO CTT%0D%0A%0D%0APISO: "+encodeURIComponent(piso)+"."+encodeURIComponent(zona)+"%0D%0AESPECIALIDADE: "+encodeURIComponent(especialidade)+"%0D%0AOBJETO: "+encodeURIComponent(objeto)+"%0D%0AURGÊNCIA: "+encodeURIComponent(urgência)+"%0D%0A%0D%0ADESCRIÇÃO:%0D%0A"+encodeURIComponent(descrição);
+    var email = "mailto:"+"imotalismaservice"+"@"+"ctt.pt?subject=EDIFICIO CTT [Piso "+piso+"."+zona+"] - "+encodeURIComponent(especialidade)+"/"+encodeURIComponent(objeto)+" ("+encodeURIComponent(urgência)+")&body=■ FORMULÁRIO EDIFÍCIO CTT%0D%0A%0D%0APISO: "+encodeURIComponent(piso)+"."+encodeURIComponent(zona)+"%0D%0AESPECIALIDADE: "+encodeURIComponent(especialidade)+"%0D%0AOBJETO: "+encodeURIComponent(objeto)+"%0D%0AURGÊNCIA: "+encodeURIComponent(urgência)+"%0D%0A%0D%0ADESCRIÇÃO:%0D%0A"+encodeURIComponent(descrição);
     window.location.href = email;
     document.getElementById("especialidade").value = ""
     var especilidade = ""
@@ -670,7 +671,7 @@ function infoSubmeter() {
         SUBMETER PEDIDO
       </div>
       <br>
-      <a href="https://ravenwood1975.github.io/Formul%C3%A1rio%20Solicita%C3%A7%C3%B5es%20Recursos%20F%C3%ADsicos/index.html">Pedidos para outras instalações</a>
+      <a href="https://ravenwood1975.github.io/Formulário%20Solicitações%20Recursos%20Físicos/index.html">OUTRAS INSTALAÇÕES</a>
       <div class="foot" align="right">
         FORMULÁRIO EDIFÍCIO CTT v1.1
       </div>
